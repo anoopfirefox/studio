@@ -4,7 +4,7 @@ import SectionTitle from '@/components/ui/section-title';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; // CardDescription removed as not explicitly used for title
 
 const summary = {
-  name: "John Doe",
+  name: "Anoop p hegde",
   description: "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.",
   address: "Portland, Oregon, USA",
   phone: "(123) 456-7890",

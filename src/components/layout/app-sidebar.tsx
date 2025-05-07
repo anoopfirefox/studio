@@ -111,13 +111,13 @@ export default function AppSidebar() {
         <Image 
           src="https://picsum.photos/seed/devprofile/120/120" 
           data-ai-hint="man portrait" 
-          alt="John Doe" 
+          alt="Anoop p hegde" 
           width={120} 
           height={120} 
           className="rounded-full border-4 border-sidebar-border shadow-md mb-3" 
           priority
         />
-        <h1 className="text-2xl font-semibold text-sidebar-foreground">John Doe</h1>
+        <h1 className="text-2xl font-semibold text-sidebar-foreground">Anoop p hegde</h1>
         <div className="flex space-x-3 mt-3">
           {socialLinks.map(link => (
             <Link 
