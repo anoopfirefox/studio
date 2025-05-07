@@ -20,34 +20,14 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    id: 'project1',
-    title: 'GitHub Tokenization Automation',
-    category: 'Platform Engineering / DevSecOps',
-    imageUrl: 'https://picsum.photos/seed/githubactions/600/400',
-    imageHint: 'cloud security automation',
-    description: 'Implemented GitHub Tokenization using self-hosted GitHub Actions runners on Azure Cloud, enhancing security and automation for CI/CD pipelines.',
+    id: 'platform-engineering-devsecops-multicloud',
+    title: 'Platform Engineering & DevSecOps (Multi-Cloud)',
+    category: 'Platform Engineering / DevSecOps / Multi-Cloud',
+    imageUrl: 'https://picsum.photos/seed/multiCloudPlatform/600/400',
+    imageHint: 'cloud devops platform',
+    description: 'Led significant Platform Engineering and DevSecOps initiatives in multi-cloud contexts. Key accomplishments include: GitHub Tokenization automation using self-hosted GitHub Actions on Azure Cloud; setting up End-to-End Platform Engineering Automation with FluxCD, Terraform, Azure AKS, and self-hosted GitHub Action runners; and containerizing production-grade Spring Boot microservices leveraging Docker, Kubernetes, service mesh technologies, AKS, Azure DevOps, Ingress controllers, and ArgoCD.',
     projectUrl: '#', 
     codeUrl: '#', 
-  },
-  {
-    id: 'project2',
-    title: 'End-to-End Platform Engineering Automation',
-    category: 'Platform Engineering / DevOps',
-    imageUrl: 'https://picsum.photos/seed/platformautomation/600/400',
-    imageHint: 'kubernetes cluster infrastructure',
-    description: 'Led the setup of end-to-end Platform Engineering automation utilizing FluxCD for GitOps, Terraform for IaC, Azure Kubernetes Service (AKS), and self-hosted GitHub Action runners.',
-    projectUrl: '#',
-    codeUrl: '#',
-  },
-  {
-    id: 'project3',
-    title: 'Microservice Containerization & Orchestration',
-    category: 'DevSecOps / Cloud Native',
-    imageUrl: 'https://picsum.photos/seed/microservices/600/400',
-    imageHint: 'docker containers microservices',
-    description: 'Containerized production-grade Spring Boot microservices using Docker. Orchestrated deployment and management with Kubernetes (AKS), Service Mesh (Istio/Linkerd), Azure DevOps for CI/CD, Ingress controllers, and ArgoCD for GitOps-driven deployments.',
-    projectUrl: '#',
-    codeUrl: '#',
   },
 ];
 
@@ -56,7 +36,7 @@ export default function ProjectsSection() {
     <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
       <SectionTitle id="projects-heading" title="Projects" subtitle="Showcasing my work and contributions in Platform Engineering and DevSecOps." />
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8"> {/* Adjusted grid for potentially single large card or few cards */}
         {projectsData.map((project) => (
           <Card key={project.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col">
             <CardHeader className="p-0 relative aspect-[3/2] overflow-hidden">
