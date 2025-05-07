@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ArrowDown } from 'lucide-react';
 
 export default function HeroSection() {
-  const roles = ["Developer", "Designer", "Freelancer", "Photographer"]; // Example roles
+  const roles = ["Senior DevOps Engineer"]; 
 
   return (
     <SectionWrapper 
