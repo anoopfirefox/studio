@@ -10,12 +10,28 @@ const skills = [
   { name: "JavaScript/TypeScript", value: 85 },
   { name: "GenAI/LLMs", value: 80 },
   { name: "Cloud (AWS/GCP/Azure)", value: 85 },
-  { name: "Docker & Kubernetes", value: 75 },
+  { name: "Docker & Kubernetes", value: 85 }, // Increased proficiency
   { name: "React/Next.js", value: 90 },
   { name: "Node.js/Express", value: 80 },
   { name: "Databases (SQL/NoSQL)", value: 70 },
   { name: "System Design", value: 80 },
   { name: "Agile Methodologies", value: 90 },
+  { name: "Shell/Bash Scripting", value: 85 },
+  { name: "YAML", value: 90 },
+  { name: "Helm", value: 80 },
+  { name: "Istio", value: 75 },
+  { name: "Kubernetes Ingress", value: 80 },
+  { name: "CI/CD (Jenkins, GitHub Actions, Azure DevOps)", value: 85 },
+  { name: "IaC (Terraform, Ansible, OpenTofu)", value: 90 },
+  { name: "Java (SpringBoot)", value: 80 },
+  { name: "API Design & Gateways (Azure APIM, REST, FastAPI)", value: 80 },
+  { name: "Keycloak (IDP)", value: 75 },
+  { name: "GitOps (ArgoCD, FluxCD)", value: 85 },
+  { name: "Kafka (Confluent Kafka)", value: 75 },
+  { name: "Policy as Code (OPA, Kyverno)", value: 75 },
+  { name: "Kubernetes Extensibility (CRDs, Admission Controllers)", value: 75 },
+  { name: "Application Servers (Apache, Tomcat, JBoss)", value: 70},
+  { name: "Azure WAF / AFD", value: 75 },
 ];
 
 const personalDetails = [
@@ -49,7 +65,7 @@ export default function ProfileSection() {
         <div className="md:col-span-2">
           <h3 className="text-2xl font-semibold text-primary mb-3">Staff Software Engineer | GenAI | Cloud | Full Stack Developer</h3>
           <p className="italic text-muted-foreground mb-4">
-            Highly motivated and experienced Staff Software Engineer specializing in GenAI, Cloud technologies, and Full Stack Development. Proven ability to design, develop, and deploy scalable and innovative software solutions. Passionate about leveraging cutting-edge technologies to solve complex problems and drive business value. Adept at leading projects, mentoring junior engineers, and collaborating effectively in agile environments.
+            Highly motivated and experienced Staff Software Engineer specializing in GenAI, Cloud technologies (Azure, AWS, GCP), DevOps, and Full Stack Development. Proven ability to design, develop, and deploy scalable and innovative software solutions. Passionate about leveraging cutting-edge technologies like Kubernetes, Terraform, and modern CI/CD pipelines to solve complex problems and drive business value. Adept at leading projects, mentoring junior engineers, and collaborating effectively in agile environments.
           </p>
           <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-6">
             {personalDetails.map(detail => (
