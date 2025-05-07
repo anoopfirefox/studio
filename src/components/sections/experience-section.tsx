@@ -1,52 +1,63 @@
 
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; // CardDescription removed as not explicitly used for title
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; 
 
 const summary = {
   name: "Anoop p hegde",
-  description: "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.",
-  address: "Portland, Oregon, USA",
-  phone: "(123) 456-7890",
-  email: "alice.barkley@example.com",
+  description: "Highly motivated and experienced Staff Software Engineer specializing in GenAI, Cloud technologies, and Full Stack Development. Proven ability to design, develop, and deploy scalable and innovative software solutions. Passionate about leveraging cutting-edge technologies to solve complex problems and drive business value.",
+  address: "Bengaluru, Karnataka, India",
+  phone: "+91 98765 43210", // Placeholder
+  email: "anoop.hegde@example.com", // Placeholder
 };
 
 const educationData = [
   {
-    degree: "Master of Fine Arts & Graphic Design",
-    period: "2015 - 2016",
-    institution: "Rochester Institute of Technology, Rochester, NY",
-    description: "Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend",
+    degree: "Master of Science in Computer Science", // Generic update
+    period: "2014 - 2016", // Generic update
+    institution: "Visvesvaraya Technological University (VTU) or equivalent", // Generic update
+    description: "Specialized in advanced software engineering principles, distributed systems, and machine learning. Thesis project focused on [Generic AI/Cloud Project Topic].",
   },
   {
-    degree: "Bachelor of Fine Arts & Graphic Design",
-    period: "2010 - 2014",
-    institution: "Rochester Institute of Technology, Rochester, NY",
-    description: "Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila",
+    degree: "Bachelor of Engineering in Computer Science", // Generic update
+    period: "2010 - 2014", // Generic update
+    institution: "Reputed Engineering College, India", // Generic update
+    description: "Comprehensive foundation in computer science fundamentals, including data structures, algorithms, database management, and operating systems.",
   },
 ];
 
 const experienceData = [
   {
-    role: "Senior Graphic Design Specialist",
-    period: "2019 - Present",
-    company: "Experion, New York, NY",
+    role: "Staff Software Engineer", // Generic update
+    period: "2020 - Present", // Generic update
+    company: "Leading Tech Company, Bengaluru", // Generic update
     responsibilities: [
-      "Lead in the design, development, and implementation of the graphic, layout, and production communication materials",
-      "Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project.",
-      "Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design",
-      "Oversee the efficient use of production project budgets ranging from $2,000 - $25,000",
+      "Lead the design and development of scalable microservices for [GenAI/Cloud Platform].",
+      "Mentor junior engineers and conduct code reviews to ensure high-quality deliverables.",
+      "Collaborate with product managers and designers to define project requirements and timelines.",
+      "Drive innovation by researching and implementing new technologies and best practices.",
+      "Optimize application performance and reliability through monitoring and CI/CD pipelines.",
     ],
   },
   {
-    role: "Graphic Design Specialist",
-    period: "2017 - 2018",
-    company: "Stepping Stone Advertising, New York, NY",
+    role: "Senior Software Engineer", // Generic update
+    period: "2017 - 2020", // Generic update
+    company: "Mid-Sized Tech Firm, Bengaluru", // Generic update
     responsibilities: [
-      "Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).",
-      "Managed up to 5 projects or tasks at a given time while under pressure",
-      "Recommended and consulted with clients on the most appropriate graphic design",
-      "Created 4+ design presentations and proposals a month for clients and account managers",
+      "Developed and maintained key features for a [SaaS/E-commerce] application using [Relevant Tech Stack, e.g., React, Node.js, AWS].",
+      "Contributed to the migration of legacy systems to modern cloud infrastructure.",
+      "Participated in agile scrum ceremonies and contributed to sprint planning and execution.",
+      "Improved system efficiency by identifying and resolving performance bottlenecks.",
+    ],
+  },
+   {
+    role: "Software Engineer", // Generic update
+    period: "2016 - 2017", // Generic update
+    company: "Startup Inc., Bengaluru", // Generic update
+    responsibilities: [
+      "Worked on full-stack development tasks for early-stage product development.",
+      "Gained experience with various technologies and rapid prototyping.",
+      "Contributed to building foundational features of the core product.",
     ],
   },
 ];
@@ -57,7 +68,6 @@ export default function ExperienceSection() {
       <SectionTitle id="experience-heading" title="Experience" subtitle="My professional journey and education." />
       
       <div className="grid lg:grid-cols-2 gap-8">
-        {/* Summary is part of overall profile, usually. Here we focus on Education and Work Experience */}
         <div>
             <h3 className="text-2xl font-semibold text-primary mb-4 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Education</h3>
             {educationData.map((edu, index) => (
@@ -94,7 +104,6 @@ export default function ExperienceSection() {
           ))}
         </div>
       </div>
-       {/* Summary section from original Resume, can be integrated into Profile or kept minimal here if desired */}
        <div className="mt-8">
             <h3 className="text-2xl font-semibold text-primary mb-3 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Summary</h3>
             <Card className="shadow-md hover:shadow-lg transition-shadow">
