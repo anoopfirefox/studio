@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Nextfolio | Personal Portfolio',
-  description: 'A personal portfolio website built with Next.js and Tailwind CSS.',
+  title: 'Nextfolio | Anoop P Hegde | Personal Portfolio',
+  description: 'A personal portfolio website for Anoop P Hegde, built with Next.js and Tailwind CSS.',
 };
 
 export default function RootLayout({
@@ -32,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+

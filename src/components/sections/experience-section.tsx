@@ -4,7 +4,7 @@ import SectionTitle from '@/components/ui/section-title';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; 
 
 const summary = {
-  name: "Anoop p hegde",
+  name: "Anoop P Hegde",
   description: "Senior DevOps Consultant with 7.8 years of expertise in DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development, and Web Development. Proficient in building end-to-end CI/CD pipelines, IAC solutions, and containerization with Platform Engineering strategies. Experienced in centralized monitoring/logging, HA Redhat Cluster, and implementing security best practices.",
   address: "Bengaluru, Karnataka, India",
   email: "anoop.techstorm@gmail.com", 

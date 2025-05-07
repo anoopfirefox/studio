@@ -24,7 +24,7 @@ export default function HeroSection() {
       
       <div className="relative z-10"> {/* Content wrapper */}
         <h1 id="hero-heading" className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-foreground mb-4">
-          Anoop p hegde
+          Anoop P Hegde
         </h1>
         <p className="text-2xl sm:text-3xl md:text-4xl text-muted-foreground mb-8">
           I&apos;m a <TypingAnimation strings={roles} className="font-semibold text-primary" />

@@ -127,7 +127,7 @@ export default function ProfileSection() {
           <Image 
             src="https://picsum.photos/seed/anoop-profile-main/400/400" 
             data-ai-hint="man suit"
-            alt="Anoop p hegde - Profile Picture" 
+            alt="Anoop P Hegde - Profile Picture" 
             width={400} 
             height={400} 
             className="rounded-lg shadow-xl w-full" 
