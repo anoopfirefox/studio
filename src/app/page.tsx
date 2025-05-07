@@ -8,6 +8,7 @@ import ContactSection from '@/components/sections/contact-section';
 import AppFooter from '@/components/layout/app-footer';
 import { Button } from '@/components/ui/button'; // For the mobile trigger
 import { PanelLeftOpen } from 'lucide-react';
+import React from 'react';
 
 export default function Home() {
   return (
@@ -18,8 +19,10 @@ export default function Home() {
         <div className="md:hidden p-4 fixed top-4 left-4 z-50">
           <SidebarTrigger asChild>
             <Button variant="outline" size="icon" className="rounded-full shadow-md bg-card hover:bg-secondary">
-              <PanelLeftOpen className="h-5 w-5" />
-              <span className="sr-only">Toggle sidebar</span>
+              <>
+                <PanelLeftOpen className="h-5 w-5" />
+                <span className="sr-only">Toggle sidebar</span>
+              </>
             </Button>
           </SidebarTrigger>
         </div>
