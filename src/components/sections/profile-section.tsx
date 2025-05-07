@@ -109,7 +109,7 @@ const categorizedSkills: SkillCategory[] = [
 
 const personalDetails = [
   { label: "Birthday", value: "1 May 1990", icon: Gift },
-  { label: "Website", value: "portfolio.example.com", icon: Globe, href: "https://portfolio.example.com" },
+  { label: "Website", value: "portfolio.example.com", icon: Globe, href: "https://portfolio.example.com" }, // User might want to update this
   { label: "City", value: "Bengaluru, Karnataka, India", icon: MapPin },
   { label: "Age", value: "34", icon: Calendar }, // This will need to be updated dynamically or removed if not maintained
   { label: "Degree", value: "Bachelor of Engineering", icon: UserCheck }, 
@@ -125,12 +125,13 @@ export default function ProfileSection() {
       <div className="grid md:grid-cols-3 gap-8 items-start">
         <div className="md:col-span-1">
           <Image 
-            src="https://picsum.photos/seed/profilepage/400/400" 
-            data-ai-hint="professional man"
-            alt="Anoop p hegde - Profile" 
+            src="https://picsum.photos/seed/anoop-profile-main/400/400" 
+            data-ai-hint="man suit"
+            alt="Anoop p hegde - Profile Picture" 
             width={400} 
             height={400} 
             className="rounded-lg shadow-xl w-full" 
+            priority
           />
         </div>
 

@@ -104,9 +104,9 @@ export default function AppSidebar() {
     >
       <SidebarHeader className="p-6 flex flex-col items-center text-center">
         <Image 
-          src="https://picsum.photos/seed/devprofile/120/120" 
-          data-ai-hint="man portrait" 
-          alt="Anoop p hegde" 
+          src="https://picsum.photos/seed/anoop-profile/120/120" 
+          data-ai-hint="man suit" 
+          alt="Anoop p hegde profile picture" 
           width={120} 
           height={120} 
           className="rounded-full border-4 border-sidebar-border shadow-md mb-3" 
