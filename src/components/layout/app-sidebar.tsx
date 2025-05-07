@@ -38,7 +38,7 @@ const socialLinks = [
 
 export default function AppSidebar() {
   const { setOpenMobile, isMobile } = useSidebar();
-  const [activeSection, setActiveSection] = useState(navItems[0]?.id || ''); // Default to first item or empty
+  const [activeSection, setActiveSection] = useState(navItems[0]?.id || ''); 
   const pathname = usePathname(); 
 
   const handleLinkClick = (sectionId: string) => {
@@ -77,12 +77,26 @@ export default function AppSidebar() {
         setActiveSection(hashId);
       }
     } else {
+        // Fallback to set active section based on viewport if no hash
         for (const section of sections) {
             const rect = section.getBoundingClientRect();
-            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+            // Check if the section is sufficiently visible
+            if (rect.top >= 0 && rect.top <= window.innerHeight / 2) { 
                 setActiveSection(section.id);
                 break;
             }
+        }
+        // If still no active section (e.g. scrolled to bottom), default to last visible one or first
+        if (!sections.find(s => s.id === activeSection)) {
+             const visibleSections = sections.filter(s => {
+                 const r = s.getBoundingClientRect();
+                 return r.top < window.innerHeight && r.bottom >= 0;
+             });
+             if (visibleSections.length > 0) {
+                 setActiveSection(visibleSections[visibleSections.length -1].id);
+             } else if (sections.length > 0) {
+                 setActiveSection(sections[0].id);
+             }
         }
     }
 
@@ -96,12 +110,13 @@ export default function AppSidebar() {
     <Sidebar 
       side="left" 
       collapsible="icon" 
-      className="bg-sidebar text-sidebar-foreground border-r-0"
+      className="bg-sidebar text-sidebar-foreground border-r-0" // Ensure base text color is sidebar-foreground
       variant="sidebar"
     >
       <SidebarHeader className="p-6 flex flex-col items-center text-center">
         <Avatar className="h-32 w-32 border-4 border-sidebar-border shadow-md mb-3">
-          <AvatarFallback className="text-4xl bg-primary text-primary-foreground">
+          {/* Updated AvatarFallback to use sidebar theme colors */}
+          <AvatarFallback className="text-4xl bg-sidebar-primary text-sidebar-primary-foreground">
             AH
           </AvatarFallback>
         </Avatar>
@@ -129,12 +144,13 @@ export default function AppSidebar() {
                 asChild 
                 isActive={activeSection === item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className="justify-start w-full text-base rounded-md group"
+                className="justify-start w-full text-base rounded-md" // Removed 'group' as it's on SidebarMenuItem
                 variant="default" 
               >
                 <a href={item.href} className="flex items-center w-full">
-                  <item.icon className={`mr-3 h-5 w-5 ${activeSection === item.id ? 'text-sidebar-primary' : 'text-sidebar-foreground/70 group-hover:text-sidebar-accent-foreground'}`} />
-                  <span className={`${activeSection === item.id ? 'text-sidebar-primary-foreground font-medium' : 'text-sidebar-foreground/90 group-hover:text-sidebar-accent-foreground'}`}>
+                  {/* Simplified icon and span classes, relying on SidebarMenuButton's active/hover states */}
+                  <item.icon className="mr-3 h-5 w-5" />
+                  <span> 
                     {item.label}
                   </span>
                 </a>
@@ -146,4 +162,3 @@ export default function AppSidebar() {
     </Sidebar>
   );
 }
-

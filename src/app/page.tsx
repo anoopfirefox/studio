@@ -14,12 +14,12 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <SidebarProvider defaultOpen={true}>
+    <SidebarProvider defaultOpen={false}>
       <AppSidebar />
       <SidebarInset className="flex flex-col min-h-screen bg-background">
         <div className="md:hidden p-4 fixed top-4 left-4 z-50">
           <SidebarTrigger asChild>
-            <Button variant="outline" size="icon" className="rounded-full shadow-md bg-card hover:bg-secondary">
+            <Button variant="outline" size="icon" className="rounded-full shadow-lg bg-card hover:bg-secondary/80 text-card-foreground">
                 <PanelLeftOpen className="h-5 w-5" />
                 <span className="sr-only">Toggle sidebar</span>
             </Button>
@@ -39,4 +39,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
