@@ -7,7 +7,7 @@ import { MapPin, Mail } from 'lucide-react';
 
 const contactInfo = [
   { icon: MapPin, label: "Location:", value: "Bengaluru, Karnataka, India" },
-  { icon: Mail, label: "Email:", value: "anoop.hegde@example.com", href: "mailto:anoop.hegde@example.com" },
+  { icon: Mail, label: "Email:", value: "anoop.techstorm@gmail.com", href: "mailto:anoop.techstorm@gmail.com" },
 ];
 
 export default function ContactUsSection() {

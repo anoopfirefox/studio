@@ -17,7 +17,7 @@ const categorizedSkills: SkillCategory[] = [
   },
   {
     name: "Containerization",
-    skills: ["Azure AKS", "AWS EKS", "Openshift OCP", "Kubernetes", "Helm", "Istio", "Ingress", "Docker", "Podman"],
+    skills: ["Azure AKS", "AWS EKS", "Openshift OCP", "Kubernetes", "Helm", "Istio", "Ingress", "Docker", "Podman", "Redhat openshift container platform"],
   },
   {
     name: "CI/CD Pipeline",
@@ -96,7 +96,13 @@ const categorizedSkills: SkillCategory[] = [
       "DNS Routing",
       "SRE", 
       "Production grade Infrastructure",
-      "Spring API Gateways"
+      "Spring API Gateways",
+      "Weblogic", 
+      "Jboss EAP", 
+      "Springboot", 
+      "Apache", 
+      "Nginx",
+      "Redhat HA Cluster"
     ],
   },
 ];
@@ -107,7 +113,7 @@ const personalDetails = [
   { label: "City", value: "Bengaluru, Karnataka, India", icon: MapPin },
   { label: "Age", value: "34", icon: Calendar }, // This will need to be updated dynamically or removed if not maintained
   { label: "Degree", value: "Bachelor of Engineering", icon: UserCheck }, 
-  { label: "Email", value: "anoop.hegde@example.com", icon: Mail, href: "mailto:anoop.hegde@example.com" },
+  { label: "Email", value: "anoop.techstorm@gmail.com", icon: Mail, href: "mailto:anoop.techstorm@gmail.com" },
   { label: "Freelance", value: "Available", icon: Briefcase },
 ];
 
@@ -134,7 +140,7 @@ export default function ProfileSection() {
             Senior DevOps Consultant with 7.8 years of expertise in DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development, and Web Development. Proficient in building end-to-end CI/CD pipelines, IAC solutions (Terraform, Ansible), and containerization (Docker, Kubernetes) with Platform Engineering strategies. Experienced in centralized monitoring/logging, HA Redhat Cluster, and implementing security best practices (Azure WAF, GHA-Security, Mend, SonarQube, Self-hosted GitHub Runners on private AKS).
           </p>
            <p className="text-muted-foreground mb-2">
-            Proactively learning and implementing Cloud Native, Platform Engineering, and industry-standard production-grade solutions, incorporating best practices with SecOps principles. Actively upskilling in Multi-Cloud Platforms, SRE, Advanced Containerization, and Full Stack Development.
+            Proactively learning and implementing Cloud Native, Platform Engineering, and industry-standard production-grade solutions, incorporating best practices with SecOps principles. Actively upskilling in Multi-Cloud Platforms, SRE, Advanced Containerization, and Full Stack Development. Proactively learning middleware stack such as Apache/ Modsecurity , JBoss , WebLogic , tomcat , SSL/SAML, ELK. In Addition to that worked on Api gateway such as spring eureka, Redhat HA Clustering.
           </p>
           <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-6">
             {personalDetails.map(detail => (
@@ -142,9 +148,9 @@ export default function ProfileSection() {
                 <detail.icon className="h-5 w-5 text-primary" />
                 <span className="font-medium text-foreground">{detail.label}:</span>
                 {detail.href ? (
-                  <a href={detail.href} className="text-muted-foreground hover:text-primary transition-colors">{detail.value}</a>
+                  <a href={detail.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors break-all">{detail.value}</a>
                 ) : (
-                  <span className="text-muted-foreground">{detail.value}</span>
+                  <span className="text-muted-foreground break-all">{detail.value}</span>
                 )}
               </div>
             ))}
