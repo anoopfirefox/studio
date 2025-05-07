@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
   	extend: {
+      fontFamily: {
+        sans: ['var(--font-geist-sans)', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -82,13 +86,18 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+        'pulse-border': { // For typing animation cursor
+          '0%, 100%': { borderColor: 'transparent' },
+          '50%': { borderColor: 'hsl(var(--primary))' },
+        }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+        'pulse': 'pulse-border 0.75s step-end infinite', // For typing animation cursor
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/aspect-ratio'),],
 } satisfies Config;
