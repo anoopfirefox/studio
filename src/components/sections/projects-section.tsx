@@ -1,7 +1,7 @@
 
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'; // CardTitle removed as it's not directly used here for project titles
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'; 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -21,47 +21,40 @@ interface Project {
 const projectsData: Project[] = [
   {
     id: 'project1',
-    title: 'E-commerce Platform',
-    category: 'Web Development',
-    imageUrl: 'https://picsum.photos/seed/ecom/600/400',
-    imageHint: 'online store',
-    description: 'A full-featured e-commerce platform with modern UI/UX, payment gateway integration, and admin dashboard.',
-    projectUrl: '#',
-    codeUrl: '#',
+    title: 'GitHub Tokenization Automation',
+    category: 'Platform Engineering / DevSecOps',
+    imageUrl: 'https://picsum.photos/seed/githubactions/600/400',
+    imageHint: 'cloud security automation',
+    description: 'Implemented GitHub Tokenization using self-hosted GitHub Actions runners on Azure Cloud, enhancing security and automation for CI/CD pipelines.',
+    projectUrl: '#', 
+    codeUrl: '#', 
   },
   {
     id: 'project2',
-    title: 'Mobile App Design',
-    category: 'UI/UX Design',
-    imageUrl: 'https://picsum.photos/seed/appdesign/600/400',
-    imageHint: 'mobile interface',
-    description: 'User interface and experience design for a fitness tracking mobile application. Focused on intuitive navigation.',
+    title: 'End-to-End Platform Engineering Automation',
+    category: 'Platform Engineering / DevOps',
+    imageUrl: 'https://picsum.photos/seed/platformautomation/600/400',
+    imageHint: 'kubernetes cluster infrastructure',
+    description: 'Led the setup of end-to-end Platform Engineering automation utilizing FluxCD for GitOps, Terraform for IaC, Azure Kubernetes Service (AKS), and self-hosted GitHub Action runners.',
     projectUrl: '#',
-  },
-  {
-    id: 'project3',
-    title: 'Data Visualization Dashboard',
-    category: 'Data Science',
-    imageUrl: 'https://picsum.photos/seed/dataviz/600/400',
-    imageHint: 'charts graphs',
-    description: 'An interactive dashboard for visualizing complex datasets, built with D3.js and React.',
     codeUrl: '#',
   },
   {
-    id: 'project4',
-    title: 'Branding Identity',
-    category: 'Graphic Design',
-    imageUrl: 'https://picsum.photos/seed/branding/600/400',
-    imageHint: 'logo design',
-    description: 'Complete branding identity package for a startup, including logo, color palette, and style guide.',
+    id: 'project3',
+    title: 'Microservice Containerization & Orchestration',
+    category: 'DevSecOps / Cloud Native',
+    imageUrl: 'https://picsum.photos/seed/microservices/600/400',
+    imageHint: 'docker containers microservices',
+    description: 'Containerized production-grade Spring Boot microservices using Docker. Orchestrated deployment and management with Kubernetes (AKS), Service Mesh (Istio/Linkerd), Azure DevOps for CI/CD, Ingress controllers, and ArgoCD for GitOps-driven deployments.',
     projectUrl: '#',
+    codeUrl: '#',
   },
 ];
 
 export default function ProjectsSection() {
   return (
     <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
-      <SectionTitle id="projects-heading" title="Projects" subtitle="Showcasing my work and contributions." />
+      <SectionTitle id="projects-heading" title="Projects" subtitle="Showcasing my work and contributions in Platform Engineering and DevSecOps." />
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project) => (
@@ -85,7 +78,7 @@ export default function ProjectsSection() {
             </CardContent>
             <CardFooter className="p-6 border-t">
               <div className="flex space-x-3">
-                {project.projectUrl && (
+                {project.projectUrl && project.projectUrl !== '#' && (
                   <Button asChild variant="outline" size="sm">
                     <Link href={project.projectUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
@@ -93,7 +86,7 @@ export default function ProjectsSection() {
                     </Link>
                   </Button>
                 )}
-                {project.codeUrl && (
+                {project.codeUrl && project.codeUrl !== '#' && (
                   <Button asChild variant="ghost" size="sm">
                     <Link href={project.codeUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
