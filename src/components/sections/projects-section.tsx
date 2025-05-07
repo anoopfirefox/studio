@@ -1,10 +1,11 @@
+
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'; // CardTitle removed as it's not directly used here for project titles
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react'; // Using Github as an example for code link
+import { ExternalLink, Github } from 'lucide-react'; 
 
 interface Project {
   id: string;
@@ -17,7 +18,7 @@ interface Project {
   codeUrl?: string;
 }
 
-const projects: Project[] = [
+const projectsData: Project[] = [
   {
     id: 'project1',
     title: 'E-commerce Platform',
@@ -57,13 +58,13 @@ const projects: Project[] = [
   },
 ];
 
-export default function PortfolioSection() {
+export default function ProjectsSection() {
   return (
-    <SectionWrapper id="portfolio" ariaLabelledBy="portfolio-heading">
-      <SectionTitle id="portfolio-heading" title="Portfolio" subtitle="A collection of my recent projects and designs." />
+    <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
+      <SectionTitle id="projects-heading" title="Projects" subtitle="Showcasing my work and contributions." />
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
+        {projectsData.map((project) => (
           <Card key={project.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col">
             <CardHeader className="p-0 relative aspect-[3/2] overflow-hidden">
               <Image 
@@ -75,7 +76,6 @@ export default function PortfolioSection() {
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                 {/* Could add category or quick links here for hover state */}
               </div>
             </CardHeader>
             <CardContent className="p-6 flex-grow">
@@ -109,3 +109,4 @@ export default function PortfolioSection() {
     </SectionWrapper>
   );
 }
+

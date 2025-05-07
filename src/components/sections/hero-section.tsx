@@ -1,3 +1,4 @@
+
 import SectionWrapper from '@/components/layout/section-wrapper';
 import TypingAnimation from '@/components/ui/typing-animation';
 import { Button } from '@/components/ui/button';
@@ -29,7 +30,7 @@ export default function HeroSection() {
           I&apos;m a <TypingAnimation strings={roles} className="font-semibold text-primary" />
         </p>
         <Button asChild size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-shadow">
-          <Link href="#about">
+          <Link href="#profile">
             Discover More <ArrowDown className="ml-2 h-5 w-5" />
           </Link>
         </Button>
@@ -37,3 +38,4 @@ export default function HeroSection() {
     </SectionWrapper>
   );
 }
+

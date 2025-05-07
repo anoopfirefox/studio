@@ -1,3 +1,4 @@
+
 "use client";
 
 import SectionWrapper from '@/components/layout/section-wrapper';
@@ -5,8 +6,7 @@ import SectionTitle from '@/components/ui/section-title';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { MapPin, Mail, Phone, Share2 } from 'lucide-react'; // Share2 for general contact/socials
+import { MapPin, Mail, Phone } from 'lucide-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -29,7 +29,7 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-export default function ContactSection() {
+export default function ContactUsSection() {
   const { toast } = useToast();
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -42,13 +42,12 @@ export default function ContactSection() {
   });
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    // Simulate API call
     console.log(data);
     await new Promise(resolve => setTimeout(resolve, 1000)); 
     toast({
       title: "Message Sent!",
       description: "Thank you for reaching out. I'll get back to you soon.",
-      variant: "default", // 'default' uses primary color accents
+      variant: "default", 
     });
     form.reset();
   };
@@ -60,8 +59,8 @@ export default function ContactSection() {
   ];
 
   return (
-    <SectionWrapper id="contact" ariaLabelledBy="contact-heading">
-      <SectionTitle id="contact-heading" title="Contact" subtitle="Get in touch with me for collaborations or inquiries." />
+    <SectionWrapper id="contact-us" ariaLabelledBy="contact-us-heading">
+      <SectionTitle id="contact-us-heading" title="Contact Us" subtitle="Let's connect for collaborations or inquiries." />
       
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-1 space-y-6">
@@ -82,7 +81,6 @@ export default function ContactSection() {
               </div>
             </div>
           ))}
-          {/* Example for a map embed - replace with actual map if needed */}
           <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-md">
              <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.361281182443!2d-74.00853268459503!3d40.71005897933211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3b79183%3A0x198d634e50416be7!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1633123456789!5m2!1sen!2sbd" 
@@ -166,3 +164,4 @@ export default function ContactSection() {
     </SectionWrapper>
   );
 }
+

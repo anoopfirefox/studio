@@ -1,8 +1,9 @@
+
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
-import { ChevronRight, Calendar, Globe, Phone, MapPin, UserCheck, Mail, Gift } from 'lucide-react';
+import { Calendar, Globe, Phone, MapPin, UserCheck, Mail, Gift } from 'lucide-react';
 
 const skills = [
   { name: "HTML", value: 100 },
@@ -19,20 +20,20 @@ const personalDetails = [
   { label: "Phone", value: "+123 456 7890", icon: Phone, href: "tel:+1234567890" },
   { label: "City", value: "New York, USA", icon: MapPin },
   { label: "Age", value: "29", icon: Calendar }, // Calculate dynamically if preferred
-  { label: "Degree", value: "Master", icon: UserCheck }, // Placeholder, could be GraduationCap icon
+  { label: "Degree", value: "Master", icon: UserCheck }, 
   { label: "Email", value: "email@example.com", icon: Mail, href: "mailto:email@example.com" },
   { label: "Freelance", value: "Available", icon: UserCheck },
 ];
 
-export default function AboutSection() {
+export default function ProfileSection() {
   return (
-    <SectionWrapper id="about" ariaLabelledBy="about-heading">
-      <SectionTitle id="about-heading" title="About" subtitle="Learn more about me, my skills, and my experience." />
+    <SectionWrapper id="profile" ariaLabelledBy="profile-heading">
+      <SectionTitle id="profile-heading" title="Profile" subtitle="Who I am and what I do." />
       
       <div className="grid md:grid-cols-3 gap-8 items-start">
         <div className="md:col-span-1">
           <Image 
-            src="https://picsum.photos/seed/aboutprofile/400/400" 
+            src="https://picsum.photos/seed/profilepage/400/400" 
             data-ai-hint="professional man"
             alt="John Doe - Profile" 
             width={400} 
@@ -82,3 +83,4 @@ export default function AboutSection() {
     </SectionWrapper>
   );
 }
+

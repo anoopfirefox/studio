@@ -12,10 +12,10 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  HomeIcon, 
   UserIcon, 
+  BriefcaseIcon, 
   FileTextIcon, 
-  BriefcaseIcon, // Using Briefcase for Portfolio
+  AwardIcon,
   MailIcon, 
   TwitterIcon, 
   FacebookIcon, 
@@ -27,11 +27,11 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const navItems = [
-  { id: "hero", label: "Home", icon: HomeIcon, href: "#hero" },
-  { id: "about", label: "About", icon: UserIcon, href: "#about" },
-  { id: "resume", label: "Resume", icon: FileTextIcon, href: "#resume" },
-  { id: "portfolio", label: "Portfolio", icon: BriefcaseIcon, href: "#portfolio" },
-  { id: "contact", label: "Contact", icon: MailIcon, href: "#contact" },
+  { id: "profile", label: "Profile", icon: UserIcon, href: "#profile" },
+  { id: "projects", label: "Projects", icon: BriefcaseIcon, href: "#projects" },
+  { id: "experience", label: "Experience", icon: FileTextIcon, href: "#experience" },
+  { id: "certifications", label: "Certifications", icon: AwardIcon, href: "#certifications" },
+  { id: "contact-us", label: "Contact Us", icon: MailIcon, href: "#contact-us" },
 ];
 
 const socialLinks = [
@@ -44,15 +44,13 @@ const socialLinks = [
 
 export default function AppSidebar() {
   const { setOpenMobile, isMobile } = useSidebar();
-  const [activeSection, setActiveSection] = useState('hero');
-  const pathname = usePathname(); // In case of multi-page setup later
+  const [activeSection, setActiveSection] = useState(navItems[0]?.id || ''); // Default to first item or empty
+  const pathname = usePathname(); 
 
   const handleLinkClick = (sectionId: string) => {
     if (isMobile) {
       setOpenMobile(false);
     }
-    // setActiveSection(sectionId); // Set active section immediately on click
-    // Manual scroll if needed, but smooth scroll CSS should handle it.
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -61,9 +59,9 @@ export default function AppSidebar() {
   
   useEffect(() => {
     const observerOptions = {
-      root: null, // relative to document viewport
+      root: null, 
       rootMargin: '0px',
-      threshold: 0.4 // 40% of the section is visible
+      threshold: 0.4 
     };
 
     const observerCallback: IntersectionObserverCallback = (entries) => {
@@ -79,16 +77,35 @@ export default function AppSidebar() {
     
     sections.forEach(section => observer.observe(section));
 
+    // Set initial active section if a hash is present (e.g. from direct link)
+    // or default to the first visible section on load.
+    if (window.location.hash) {
+      const hashId = window.location.hash.substring(1);
+      if (navItems.some(item => item.id === hashId)) {
+        setActiveSection(hashId);
+      }
+    } else {
+        // Find first visible section on load if no hash
+        for (const section of sections) {
+            const rect = section.getBoundingClientRect();
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                setActiveSection(section.id);
+                break;
+            }
+        }
+    }
+
+
     return () => sections.forEach(section => observer.unobserve(section));
-  }, [pathname]);
+  }, [pathname, navItems]); // Added navItems to dependency array
 
 
   return (
     <Sidebar 
       side="left" 
       collapsible="icon" 
-      className="bg-sidebar text-sidebar-foreground border-r-0" // Use sidebar theme colors
-      variant="sidebar" // Ensure it's a standard sidebar
+      className="bg-sidebar text-sidebar-foreground border-r-0"
+      variant="sidebar"
     >
       <SidebarHeader className="p-6 flex flex-col items-center text-center">
         <Image 
@@ -125,17 +142,8 @@ export default function AppSidebar() {
                 isActive={activeSection === item.id}
                 onClick={() => handleLinkClick(item.id)}
                 className="justify-start w-full text-base rounded-md group"
-                variant="default" // Use default variant which will pick up sidebar theme
+                variant="default" 
               >
-                {/* 
-                  The anchor tag is essential for Next.js Link behavior and also for href navigation.
-                  However, SidebarMenuButton itself can be a button or an anchor.
-                  If SidebarMenuButton handles navigation via onClick, Link is not strictly needed
-                  but good for semantics and SEO if these were actual pages.
-                  For same-page anchors, a simple <a> or <button> in SidebarMenuButton is fine.
-                  Here, we let SidebarMenuButton be a button and handle click for scrolling.
-                  The href on the Link component is for semantics and potential future direct navigation.
-                */}
                 <a href={item.href} className="flex items-center w-full">
                   <item.icon className={`mr-3 h-5 w-5 ${activeSection === item.id ? 'text-sidebar-primary' : 'text-sidebar-foreground/70 group-hover:text-sidebar-accent-foreground'}`} />
                   <span className={`${activeSection === item.id ? 'text-sidebar-primary-foreground font-medium' : 'text-sidebar-foreground/90 group-hover:text-sidebar-accent-foreground'}`}>
@@ -150,3 +158,4 @@ export default function AppSidebar() {
     </Sidebar>
   );
 }
+

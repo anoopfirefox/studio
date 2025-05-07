@@ -1,6 +1,7 @@
+
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'; // CardDescription removed as not explicitly used for title
 
 const summary = {
   name: "John Doe",
@@ -10,7 +11,7 @@ const summary = {
   email: "alice.barkley@example.com",
 };
 
-const education = [
+const educationData = [
   {
     degree: "Master of Fine Arts & Graphic Design",
     period: "2015 - 2016",
@@ -25,7 +26,7 @@ const education = [
   },
 ];
 
-const experience = [
+const experienceData = [
   {
     role: "Senior Graphic Design Specialist",
     period: "2019 - Present",
@@ -50,34 +51,16 @@ const experience = [
   },
 ];
 
-export default function ResumeSection() {
+export default function ExperienceSection() {
   return (
-    <SectionWrapper id="resume" ariaLabelledBy="resume-heading">
-      <SectionTitle id="resume-heading" title="Resume" subtitle="Check out my professional background and qualifications." />
+    <SectionWrapper id="experience" ariaLabelledBy="experience-heading">
+      <SectionTitle id="experience-heading" title="Experience" subtitle="My professional journey and education." />
       
       <div className="grid lg:grid-cols-2 gap-8">
-        {/* Summary & Education Column */}
+        {/* Summary is part of overall profile, usually. Here we focus on Education and Work Experience */}
         <div>
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-primary mb-3 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Summary</h3>
-            <Card className="shadow-md hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-foreground">{summary.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-3">{summary.description}</p>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li>{summary.address}</li>
-                  <li>{summary.phone}</li>
-                  <li>{summary.email}</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold text-primary mb-3 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Education</h3>
-            {education.map((edu, index) => (
+            <h3 className="text-2xl font-semibold text-primary mb-4 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Education</h3>
+            {educationData.map((edu, index) => (
               <Card key={index} className="mb-6 shadow-md hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-foreground">{edu.degree}</CardTitle>
@@ -90,12 +73,10 @@ export default function ResumeSection() {
               </Card>
             ))}
           </div>
-        </div>
 
-        {/* Professional Experience Column */}
         <div>
-          <h3 className="text-2xl font-semibold text-primary mb-3 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Professional Experience</h3>
-          {experience.map((exp, index) => (
+          <h3 className="text-2xl font-semibold text-primary mb-4 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Professional Experience</h3>
+          {experienceData.map((exp, index) => (
             <Card key={index} className="mb-6 shadow-md hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="text-xl font-bold text-foreground">{exp.role}</CardTitle>
@@ -113,6 +94,24 @@ export default function ResumeSection() {
           ))}
         </div>
       </div>
+       {/* Summary section from original Resume, can be integrated into Profile or kept minimal here if desired */}
+       <div className="mt-8">
+            <h3 className="text-2xl font-semibold text-primary mb-3 relative pl-6 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-4 before:h-4 before:bg-primary/30 before:border-2 before:border-primary before:rounded-full">Summary</h3>
+            <Card className="shadow-md hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-foreground">{summary.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-3">{summary.description}</p>
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  <li>{summary.address}</li>
+                  <li>{summary.phone}</li>
+                  <li>{summary.email}</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
     </SectionWrapper>
   );
 }
+
