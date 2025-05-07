@@ -9,7 +9,6 @@ import {
   SidebarMenuButton,
   useSidebar 
 } from "@/components/ui/sidebar";
-import Image from 'next/image';
 import Link from 'next/link';
 import { 
   UserIcon, 
@@ -22,6 +21,7 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const navItems = [
   { id: "profile", label: "Profile", icon: UserIcon, href: "#profile" },
@@ -71,15 +71,12 @@ export default function AppSidebar() {
     
     sections.forEach(section => observer.observe(section));
 
-    // Set initial active section if a hash is present (e.g. from direct link)
-    // or default to the first visible section on load.
     if (window.location.hash) {
       const hashId = window.location.hash.substring(1);
       if (navItems.some(item => item.id === hashId)) {
         setActiveSection(hashId);
       }
     } else {
-        // Find first visible section on load if no hash
         for (const section of sections) {
             const rect = section.getBoundingClientRect();
             if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
@@ -92,7 +89,7 @@ export default function AppSidebar() {
 
     return () => sections.forEach(section => observer.unobserve(section));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]); // Removed navItems from dependency array as it's constant
+  }, [pathname]); 
 
 
   return (
@@ -103,15 +100,11 @@ export default function AppSidebar() {
       variant="sidebar"
     >
       <SidebarHeader className="p-6 flex flex-col items-center text-center">
-        <Image 
-          src="https://picsum.photos/seed/anoop-profile/120/120" 
-          data-ai-hint="man suit" 
-          alt="Anoop P Hegde profile picture" 
-          width={120} 
-          height={120} 
-          className="rounded-full border-4 border-sidebar-border shadow-md mb-3" 
-          priority
-        />
+        <Avatar className="h-32 w-32 border-4 border-sidebar-border shadow-md mb-3">
+          <AvatarFallback className="text-4xl bg-primary text-primary-foreground">
+            AH
+          </AvatarFallback>
+        </Avatar>
         <h1 className="text-2xl font-semibold text-sidebar-foreground">Anoop P Hegde</h1>
         <div className="flex space-x-3 mt-3">
           {socialLinks.map(link => (
