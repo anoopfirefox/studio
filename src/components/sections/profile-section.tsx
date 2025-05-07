@@ -2,47 +2,64 @@
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import Image from 'next/image';
-import { Progress } from '@/components/ui/progress';
-import { Calendar, Globe, Phone, MapPin, UserCheck, Mail, Gift, Briefcase } from 'lucide-react'; // Added Briefcase
+import { Badge } from '@/components/ui/badge'; // Added Badge import
+import { Calendar, Globe, Phone, MapPin, UserCheck, Mail, Gift, Briefcase } from 'lucide-react';
 
-const skills = [
-  { name: "Python", value: 90 },
-  { name: "JavaScript/TypeScript", value: 85 },
-  { name: "GenAI/LLMs", value: 80 },
-  { name: "Cloud (AWS/GCP/Azure)", value: 85 },
-  { name: "Docker & Kubernetes", value: 85 }, // Increased proficiency
-  { name: "React/Next.js", value: 90 },
-  { name: "Node.js/Express", value: 80 },
-  { name: "Databases (SQL/NoSQL)", value: 70 },
-  { name: "System Design", value: 80 },
-  { name: "Agile Methodologies", value: 90 },
-  { name: "Shell/Bash Scripting", value: 85 },
-  { name: "YAML", value: 90 },
-  { name: "Helm", value: 80 },
-  { name: "Istio", value: 75 },
-  { name: "Kubernetes Ingress", value: 80 },
-  { name: "CI/CD (Jenkins, GitHub Actions, Azure DevOps)", value: 85 },
-  { name: "IaC (Terraform, Ansible, OpenTofu)", value: 90 },
-  { name: "Java (SpringBoot)", value: 80 },
-  { name: "API Design & Gateways (Azure APIM, REST, FastAPI)", value: 80 },
-  { name: "Keycloak (IDP)", value: 75 },
-  { name: "GitOps (ArgoCD, FluxCD)", value: 85 },
-  { name: "Kafka (Confluent Kafka)", value: 75 },
-  { name: "Policy as Code (OPA, Kyverno)", value: 75 },
-  { name: "Kubernetes Extensibility (CRDs, Admission Controllers)", value: 75 },
-  { name: "Application Servers (Apache, Tomcat, JBoss)", value: 70},
-  { name: "Azure WAF / AFD", value: 75 },
+interface SkillCategory {
+  name: string;
+  skills: string[];
+}
+
+const categorizedSkills: SkillCategory[] = [
+  {
+    name: "Scripting/Automation",
+    skills: ["Shell/Bash", "YAML", "Python"],
+  },
+  {
+    name: "Containerization",
+    skills: ["Azure AKS", "AWS EKS", "Openshift OCP", "Kubernetes", "Helm", "Istio", "Ingress"],
+  },
+  {
+    name: "CI/CD Pipeline",
+    skills: ["Jenkins", "Github Actions", "Azure DevOps"],
+  },
+  {
+    name: "IAC (Infrastructure as Code)",
+    skills: ["Terraform", "Ansible"],
+  },
+  {
+    name: "Server Side/Programming",
+    skills: ["Apache", "JBoss", "Tomcat", "Weblogic", "Proxy", "API Gateway", "Red Hat Clustering", "Java SpringBoot"],
+  },
+  {
+    name: "Others",
+    skills: [
+      "Keycloak IDP",
+      "GitOps",
+      "FluxCD",
+      "ArgoCD",
+      "Azure APIM",
+      "AFD WAF",
+      "Confluent Kafka",
+      "FAST API",
+      "weave opentofu controller",
+      "Kyverno",
+      "OPA (Open Policy Agent)",
+      "Admission Controllers",
+      "CRDs (Custom Resource Definitions)"
+    ],
+  },
 ];
 
 const personalDetails = [
-  { label: "Birthday", value: "1 May 1990", icon: Gift }, // Adjusted for plausibility
+  { label: "Birthday", value: "1 May 1990", icon: Gift },
   { label: "Website", value: "portfolio.example.com", icon: Globe, href: "https://portfolio.example.com" },
   { label: "Phone", value: "+91 98765 43210", icon: Phone, href: "tel:+919876543210" },
   { label: "City", value: "Bengaluru, Karnataka, India", icon: MapPin },
-  { label: "Age", value: "34", icon: Calendar }, // Calculate dynamically if preferred, updated for plausibility
-  { label: "Degree", value: "Master's in Computer Science", icon: UserCheck }, 
+  { label: "Age", value: "34", icon: Calendar },
+  { label: "Degree", value: "Master's in Computer Science", icon: UserCheck },
   { label: "Email", value: "anoop.hegde@example.com", icon: Mail, href: "mailto:anoop.hegde@example.com" },
-  { label: "Freelance", value: "Available", icon: Briefcase }, // Changed icon for freelance
+  { label: "Freelance", value: "Available", icon: Briefcase },
 ];
 
 export default function ProfileSection() {
@@ -88,14 +105,17 @@ export default function ProfileSection() {
 
       <div className="mt-12">
         <SectionTitle title="Skills" className="mb-8" />
-        <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
-          {skills.map(skill => (
-            <div key={skill.name}>
-              <div className="flex justify-between mb-1">
-                <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                <span className="text-sm font-medium text-primary">{skill.value}%</span>
+        <div className="space-y-8">
+          {categorizedSkills.map(category => (
+            <div key={category.name}>
+              <h4 className="text-xl font-semibold text-foreground mb-4">{category.name}</h4>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map(skill => (
+                  <Badge key={skill} variant="secondary" className="text-sm px-3 py-1 rounded-md">
+                    {skill}
+                  </Badge>
+                ))}
               </div>
-              <Progress value={skill.value} aria-label={`${skill.name} skill level: ${skill.value}%`} className="h-2" />
             </div>
           ))}
         </div>
@@ -103,4 +123,3 @@ export default function ProfileSection() {
     </SectionWrapper>
   );
 }
-
