@@ -10,7 +10,7 @@ interface Certification {
   id: string;
   title: string;
   issuer: string;
-  date: string;
+  date: string; // Format: "MMM YYYY" or "MMM YYYY - Present"
   imageUrl?: string;
   imageHint?: string;
   credentialUrl?: string;
@@ -20,32 +20,67 @@ interface Certification {
 const certificationsData: Certification[] = [
   {
     id: 'cert1',
-    title: 'Next.js Certified Developer',
-    issuer: 'Vercel',
-    date: 'Dec 2023',
-    imageUrl: 'https://picsum.photos/seed/nextjscert/300/200',
-    imageHint: 'certificate web',
-    credentialUrl: '#',
-    description: 'Validated expertise in building high-performance web applications with Next.js.',
+    title: 'Azure DevOps Solutions Expert Master Program',
+    issuer: 'Simplilearn',
+    date: 'Feb 2024 - Present',
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Azure DevOps Solutions Expert Master Program.',
   },
   {
     id: 'cert2',
-    title: 'AWS Certified Solutions Architect - Associate',
-    issuer: 'Amazon Web Services',
-    date: 'Jun 2023',
-    imageUrl: 'https://picsum.photos/seed/awscert/300/200',
-    imageHint: 'cloud certificate',
-    credentialUrl: '#',
-    description: 'Demonstrated ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS.',
+    title: 'Post Graduate Program in DevOps',
+    issuer: 'Simplilearn & Caltech University',
+    date: 'Jun 2023 - Present',
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Simplilearn Post Graduate Program in DevOps from Caltech University.',
   },
   {
     id: 'cert3',
-    title: 'Google UX Design Professional Certificate',
-    issuer: 'Coursera & Google',
-    date: 'Mar 2022',
-    // No image for this one to show conditional rendering
-    credentialUrl: '#',
-    description: 'Completed a rigorous, hands-on program to learn the fundamentals of UX design, including empathizing with users, defining pain points, ideating solutions, creating wireframes and prototypes, and testing designs.',
+    title: 'Six Sigma Process Management Yellow Belt',
+    issuer: 'Simplilearn (assumed, clarify if different)', // Assuming Simplilearn, user to clarify
+    date: 'Jun 2023 - Present', // Assuming from context, user to clarify if different
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Six Sigma Process Management Yellow Belt.',
+  },
+  {
+    id: 'cert4',
+    title: 'Microsoft Certified: Azure AI Fundamentals AI-900',
+    issuer: 'Microsoft',
+    date: 'Jul 2023 - Present', // Date might be issuance date, "Present" might mean still valid/active
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Microsoft Certified: Azure AI Fundamentals AI-900.',
+  },
+  {
+    id: 'cert5',
+    title: 'Microsoft Certified: Azure Administrator Associate AZ-104',
+    issuer: 'Microsoft',
+    date: 'Jan 2024 - Present', // Date might be issuance date
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Microsoft Certified: Azure Administrator Associate AZ-104.',
+  },
+  {
+    id: 'cert6',
+    title: 'Certified Kubernetes Application Developer (CKAD)',
+    issuer: 'CNCF (Cloud Native Computing Foundation)',
+    date: 'Oct 2021 - Present', // Date might be issuance date
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Certified Kubernetes Application Developer by CNCF.',
+  },
+  {
+    id: 'cert7',
+    title: 'Microsoft Certified: DevOps Engineer Expert AZ-400',
+    issuer: 'Microsoft',
+    date: 'Jan 2024 - Present', // Date might be issuance date
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'AZ 400 Microsoft Certified: DevOps Engineer Expert.',
+  },
+  {
+    id: 'cert8',
+    title: 'Microsoft Certified: Azure Fundamentals AZ-900',
+    issuer: 'Microsoft',
+    date: 'May 2022 - Present', // Date might be issuance date
+    credentialUrl: '#', // Replace with actual URL if available
+    description: 'Azure Fundamentals - Microsoft Certified.',
   },
 ];
 
@@ -88,7 +123,7 @@ export default function CertificationsSection() {
                 </>
               )}
               {cert.description && <p className="text-muted-foreground text-sm leading-relaxed mb-4">{cert.description}</p>}
-              {cert.credentialUrl && (
+              {cert.credentialUrl && cert.credentialUrl !== '#' && (
                 <Link href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm text-primary hover:underline">
                   View Credential <ExternalLink className="ml-1.5 h-4 w-4" />
                 </Link>
