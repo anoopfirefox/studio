@@ -33,7 +33,7 @@ const navItems = [
 
 const socialLinks = [
   { href: "https://linkedin.com/in/anoop-hegde-041625103/", label: "LinkedIn", icon: LinkedinIcon, ariaLabel: "Visit my LinkedIn profile" },
-  { href: "https://github.com/anoopfirefox", label: "GitHub", icon: GithubIcon, ariaLabel: "Visit my GitHub profile" },
+  { href: "https://github.com/AnoopHegde", label: "GitHub", icon: GithubIcon, ariaLabel: "Visit my GitHub profile" },
 ];
 
 export default function AppSidebar() {
