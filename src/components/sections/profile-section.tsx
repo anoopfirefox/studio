@@ -1,7 +1,6 @@
 
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
-import Image from 'next/image';
 import { Badge } from '@/components/ui/badge'; 
 
 interface SkillCategory {
@@ -78,20 +77,9 @@ export default function ProfileSection() {
     <SectionWrapper id="profile" ariaLabelledBy="profile-heading">
       <SectionTitle id="profile-heading" title="Profile" subtitle="Who I am and what I do." />
       
-      <div className="grid md:grid-cols-3 gap-8 items-start">
-        <div className="md:col-span-1">
-          <Image 
-            src="https://picsum.photos/seed/anoop-profile-main/400/400" 
-            data-ai-hint="man suit"
-            alt="Anoop P Hegde - Profile Picture" 
-            width={400} 
-            height={400} 
-            className="rounded-lg shadow-xl w-full" 
-            priority
-          />
-        </div>
-
-        <div className="md:col-span-2">
+      <div className="grid md:grid-cols-1 gap-8 items-start">
+        {/* Removed Image component that was here */}
+        <div className="md:col-span-1"> {/* Changed from md:col-span-2 to md:col-span-1 to take full width */}
           <h3 className="text-2xl font-semibold text-primary mb-3">Senior DevOps Consultant</h3>
           <p className="text-muted-foreground mb-4 leading-relaxed">
             Senior DevOps Consultant with overall 7.8 years of Industry expertise across various verticals such as DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development as well as Web Development Solutions. Responsible for building end-to-end industry best practices involved CI/CD, IAC, Containerization solutions such as Docker and kubernetes with Platform Engineering Strategies, Centralized container monitoring/logging solutions, HA Redhat Cluster. Involved in implementing the best security practices in the platform solution such as Azure WAF Frontdoor, GHA-Security, Mend Container scanning, SonarQube, Selfhosted Github Runners hosted on Private AKS Clusters, end-to-end touchless change management.
