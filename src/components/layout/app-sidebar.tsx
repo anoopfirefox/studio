@@ -1,4 +1,3 @@
-
 "use client";
 import { 
   Sidebar, 
@@ -75,6 +74,11 @@ export default function AppSidebar() {
       const hashId = window.location.hash.substring(1);
       if (navItems.some(item => item.id === hashId)) {
         setActiveSection(hashId);
+         const element = document.getElementById(hashId);
+         if (element) {
+            // Add a small delay to ensure content is rendered before scrolling
+            setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
+         }
       }
     } else {
         // Fallback to set active section based on viewport if no hash
@@ -110,13 +114,12 @@ export default function AppSidebar() {
     <Sidebar 
       side="left" 
       collapsible="icon" 
-      className="bg-sidebar text-sidebar-foreground border-r-0" // Ensure base text color is sidebar-foreground
+      className="bg-sidebar text-sidebar-foreground border-r-0"
       variant="sidebar"
     >
       <SidebarHeader className="p-6 flex flex-col items-center text-center">
-        <Avatar className="h-32 w-32 border-4 border-sidebar-border shadow-md mb-3">
-          {/* Updated AvatarFallback to use sidebar theme colors */}
-          <AvatarFallback className="text-4xl bg-sidebar-primary text-sidebar-primary-foreground">
+        <Avatar className="h-24 w-24 border-4 border-sidebar-border shadow-md mb-3">
+          <AvatarFallback className="text-3xl bg-sidebar-primary text-sidebar-primary-foreground">
             AH
           </AvatarFallback>
         </Avatar>
@@ -136,19 +139,18 @@ export default function AppSidebar() {
           ))}
         </div>
       </SidebarHeader>
-      <SidebarContent className="p-0 mt-4">
+      <SidebarContent className="p-4 mt-2"> {/* Adjusted padding and margin */}
         <SidebarMenu>
           {navItems.map(item => (
-            <SidebarMenuItem key={item.label} className="px-3 py-1">
+            <SidebarMenuItem key={item.label}> {/* Removed className="px-3 py-1" */}
               <SidebarMenuButton 
                 asChild 
                 isActive={activeSection === item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className="justify-start w-full text-base rounded-md" // Removed 'group' as it's on SidebarMenuItem
+                className="justify-start w-full text-base rounded-md"
                 variant="default" 
               >
                 <a href={item.href} className="flex items-center w-full">
-                  {/* Simplified icon and span classes, relying on SidebarMenuButton's active/hover states */}
                   <item.icon className="mr-3 h-5 w-5" />
                   <span> 
                     {item.label}
