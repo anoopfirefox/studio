@@ -13,51 +13,62 @@ const summary = {
 
 const educationData = [
   {
-    degree: "Master of Science in Computer Science", // Generic update
-    period: "2014 - 2016", // Generic update
-    institution: "Visvesvaraya Technological University (VTU) or equivalent", // Generic update
-    description: "Specialized in advanced software engineering principles, distributed systems, and machine learning. Thesis project focused on [Generic AI/Cloud Project Topic].",
+    degree: "Master of Science in Computer Science", 
+    period: "2014 - 2016", 
+    institution: "Visvesvaraya Technological University (VTU) or equivalent", 
+    description: "Specialized in advanced software engineering principles, distributed systems, and machine learning.",
   },
   {
-    degree: "Bachelor of Engineering in Computer Science", // Generic update
-    period: "2010 - 2014", // Generic update
-    institution: "Reputed Engineering College, India", // Generic update
+    degree: "Bachelor of Engineering in Computer Science", 
+    period: "2010 - 2014", 
+    institution: "Reputed Engineering College, India", 
     description: "Comprehensive foundation in computer science fundamentals, including data structures, algorithms, database management, and operating systems.",
   },
 ];
 
 const experienceData = [
   {
-    role: "Staff Software Engineer", // Generic update
-    period: "2020 - Present", // Generic update
-    company: "Leading Tech Company, Bengaluru", // Generic update
+    role: "Senior Azure DevOps Consultant",
+    period: "05/2023 - Present",
+    company: "KPMG India, Bangalore (Client: Shell India)",
     responsibilities: [
-      "Lead the design and development of scalable microservices for [GenAI/Cloud Platform].",
-      "Mentor junior engineers and conduct code reviews to ensure high-quality deliverables.",
-      "Collaborate with product managers and designers to define project requirements and timelines.",
-      "Drive innovation by researching and implementing new technologies and best practices.",
-      "Optimize application performance and reliability through monitoring and CI/CD pipelines.",
+      "Actively Involved in the implementation of End-to-End Production Grade Platform Engineering Architecture with various Azure managed service offerings such as APIM, WAF, Confluent Kafka, terraform. SSO keycloak IDP.",
+      "Responsible for solving various end-user client facing issues and optimize the CVE' vulnerabilities.",
+      "Working on various business requirements of technical capabilities such as Observability using Open Telemetry.",
+      "Actively working on various tech stack upgrade such as AKS, Velero FluxCD, vouch etc.",
+      "Working on the kube-Prometheus-stack with Azure Managed Services.",
+      "Working on Platform Engineering Core provisioning API’s using FAST API Python.",
+      "Implemented various devsecops, cloud ops security models such as mend, sonarqube, Github advanced security , azure pen test security remediations.",
+      "Responsible for end-to-end implementation of Github reusable workflows. Automation of Onboarding project pipelines using python.",
+      "Worked on the E2E integration testing Framework with Github Actions.",
+      "Implementation of Infracost for all the Github Reusable workflows. E2E Integration Testing for the Core Provisioning Engine, Open telemetry , APIM and Observability.",
     ],
   },
   {
-    role: "Senior Software Engineer", // Generic update
-    period: "2017 - 2020", // Generic update
-    company: "Mid-Sized Tech Firm, Bengaluru", // Generic update
+    role: "DevOps Engineer and Infrastructure Management",
+    period: "07/2018 - 05/2023",
+    company: "CGI, Bangalore (Senior Software Engineer - Consultant)",
     responsibilities: [
-      "Developed and maintained key features for a [SaaS/E-commerce] application using [Relevant Tech Stack, e.g., React, Node.js, AWS].",
-      "Contributed to the migration of legacy systems to modern cloud infrastructure.",
-      "Participated in agile scrum ceremonies and contributed to sprint planning and execution.",
-      "Improved system efficiency by identifying and resolving performance bottlenecks.",
+      "Developed the Automated workflow using Rundeck to deploy manage, configure the Application across all the environments to minimize the manual efforts taken.",
+      "Taken initiative in Designing Centralized Monitoring and logging Architecture using various tech stack such as Glow root APM, Cassandra, Grafana InfluxDB, HA Redhat Cluster, ELK, service desk across Environments.",
+      "Involved in end to end API Gateway with proxies for client Banks. Worked on Container CI/CD using docker Kubernetes and Jenkins in Dev Environment.",
+      "Developed an End to End Infrastructure configuration Management using Ansible for various application components across the Environments. And written docker images for various application components.",
+      "Worked on WebLogic patch and upgrades of various components such as hazel cast, springboot, JBoss, Apache etc.",
+      "Responsible for troubleshooting and debugging infra tech issues across the environments during application releases and DR.",
+      "Taken initiative of Developing the Login Automation using Robot framework that eliminate the manual effort during Application sanity, shakedown testing post release.",
+      "Worked on and supported automated builds, deployments, validations, and configurations in our public AWS environment.",
+      "Responsible for setting up End to End DevOps tools in higher environments such as docker, pod man, harbor, rundeck, Gitlab etc. in a containerized approach.",
+      "Worked on building the complete infrastructure on the AWS cloud environment. Setting up S3, RDS, VPC, public/private subnets as per the requirement.",
     ],
   },
    {
-    role: "Software Engineer", // Generic update
-    period: "2016 - 2017", // Generic update
-    company: "Startup Inc., Bengaluru", // Generic update
+    role: "Associate Software Engineer",
+    period: "08/2017 - 06/2018",
+    company: "Tejasco Techsoft Pvt Ltd, Bangalore (Software Engineer Trainee)",
     responsibilities: [
-      "Worked on full-stack development tasks for early-stage product development.",
-      "Gained experience with various technologies and rapid prototyping.",
-      "Contributed to building foundational features of the core product.",
+      "Worked on developing a website and Health care software in Tejasco Techsoft as a UI Developer.",
+      "Actively worked on upgrading UI framework for an existing in-house products such as E-Arogya, track your Vitals Etc.",
+      "Worked on Backend component such as Spring boot and spring MVC, Hibernate to Track your Vitals.",
     ],
   },
 ];
