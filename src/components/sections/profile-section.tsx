@@ -2,7 +2,7 @@
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge'; // Added Badge import
+import { Badge } from '@/components/ui/badge'; 
 import { Calendar, Globe, Phone, MapPin, UserCheck, Mail, Gift, Briefcase } from 'lucide-react';
 
 interface SkillCategory {
@@ -17,36 +17,86 @@ const categorizedSkills: SkillCategory[] = [
   },
   {
     name: "Containerization",
-    skills: ["Azure AKS", "AWS EKS", "Openshift OCP", "Kubernetes", "Helm", "Istio", "Ingress"],
+    skills: ["Azure AKS", "AWS EKS", "Openshift OCP", "Kubernetes", "Helm", "Istio", "Ingress", "Docker", "Podman"],
   },
   {
     name: "CI/CD Pipeline",
-    skills: ["Jenkins", "Github Actions", "Azure DevOps"],
+    skills: ["Jenkins", "Github Actions", "Azure DevOps", "Bamboo"],
   },
   {
     name: "IAC (Infrastructure as Code)",
-    skills: ["Terraform", "Ansible"],
+    skills: ["Terraform", "Ansible", "Weave TF Controller", "kubeform"],
   },
   {
     name: "Server Side/Programming",
-    skills: ["Apache", "JBoss", "Tomcat", "Weblogic", "Proxy", "API Gateway", "Red Hat Clustering", "Java SpringBoot"],
+    skills: ["Apache", "JBoss", "Tomcat", "Weblogic", "Proxy", "API Gateway", "Red Hat Clustering", "Java SpringBoot", "Nginx"],
   },
   {
-    name: "Others",
+    name: "Monitoring & Logging",
+    skills: ["Grafana", "Prometheus", "Azure Managed Services", "InfluxDB", "Glowroot with Cassandra", "ELK Stack", "Azure Log Analytics workspace", "OTEL", "Azure Data Explorer"],
+  },
+   {
+    name: "SecOps",
+    skills: ["Mend", "SonarQube", "Azure WAF Frontdoor", "GHA-Security", "CAST"],
+  },
+  {
+    name: "SCM",
+    skills: ["Gitlab", "Github", "Bitbucket"],
+  },
+  {
+    name: "GitOps",
+    skills: ["ArgoCD", "FluxCD", "Weave"],
+  },
+  {
+    name: "Messaging",
+    skills: ["Kafka", "Confluent"],
+  },
+  {
+    name: "API Tools",
+    skills: ["Postman", "ARC Client"],
+  },
+  {
+    name: "SSO",
+    skills: ["Keycloak OIDC", "IDP"],
+  },
+  {
+    name: "Cloud Native Stack",
     skills: [
-      "Keycloak IDP",
-      "GitOps",
-      "FluxCD",
-      "ArgoCD",
+      "Action-runner-controller", 
+      "actions-runners", 
+      "cert-manager", 
+      "external-dns", 
+      "fluentbit", 
+      "ingress-nginx-internal", 
+      "keycloak", 
+      "kube-prometheus-stack", 
+      "kube-bench", 
+      "kubed", 
+      "kubeform", 
+      "kubehunter", 
+      "kured", 
+      "kyverno", 
+      "velero", 
+      "vouch"
+    ],
+  },
+  {
+    name: "Others/Infra-Stack",
+    skills: [
       "Azure APIM",
       "AFD WAF",
-      "Confluent Kafka",
       "FAST API",
       "weave opentofu controller",
-      "Kyverno",
       "OPA (Open Policy Agent)",
       "Admission Controllers",
-      "CRDs (Custom Resource Definitions)"
+      "CRDs (Custom Resource Definitions)",
+      "Proxies", 
+      "Load Balancers", 
+      "Ingress", 
+      "DNS Routing",
+      "SRE", 
+      "Production grade Infrastructure",
+      "Spring API Gateways"
     ],
   },
 ];
@@ -57,7 +107,7 @@ const personalDetails = [
   { label: "Phone", value: "+91 98765 43210", icon: Phone, href: "tel:+919876543210" },
   { label: "City", value: "Bengaluru, Karnataka, India", icon: MapPin },
   { label: "Age", value: "34", icon: Calendar },
-  { label: "Degree", value: "Master's in Computer Science", icon: UserCheck },
+  { label: "Degree", value: "Bachelor of Engineering", icon: UserCheck }, // Updated Degree
   { label: "Email", value: "anoop.hegde@example.com", icon: Mail, href: "mailto:anoop.hegde@example.com" },
   { label: "Freelance", value: "Available", icon: Briefcase },
 ];
@@ -80,9 +130,12 @@ export default function ProfileSection() {
         </div>
 
         <div className="md:col-span-2">
-          <h3 className="text-2xl font-semibold text-primary mb-3">Staff Software Engineer | GenAI | Cloud | Full Stack Developer</h3>
+          <h3 className="text-2xl font-semibold text-primary mb-3">Senior DevOps Consultant</h3>
           <p className="italic text-muted-foreground mb-4">
-            Highly motivated and experienced Staff Software Engineer specializing in GenAI, Cloud technologies (Azure, AWS, GCP), DevOps, and Full Stack Development. Proven ability to design, develop, and deploy scalable and innovative software solutions. Passionate about leveraging cutting-edge technologies like Kubernetes, Terraform, and modern CI/CD pipelines to solve complex problems and drive business value. Adept at leading projects, mentoring junior engineers, and collaborating effectively in agile environments.
+            Senior DevOps Consultant with 7.8 years of expertise in DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development, and Web Development. Proficient in building end-to-end CI/CD pipelines, IAC solutions (Terraform, Ansible), and containerization (Docker, Kubernetes) with Platform Engineering strategies. Experienced in centralized monitoring/logging, HA Redhat Cluster, and implementing security best practices (Azure WAF, GHA-Security, Mend, SonarQube, Self-hosted GitHub Runners on private AKS).
+          </p>
+           <p className="text-muted-foreground mb-2">
+            Proactively learning and implementing Cloud Native, Platform Engineering, and industry-standard production-grade solutions, incorporating best practices with SecOps principles. Actively upskilling in Multi-Cloud Platforms, SRE, Advanced Containerization, and Full Stack Development.
           </p>
           <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-6">
             {personalDetails.map(detail => (
@@ -104,7 +157,7 @@ export default function ProfileSection() {
       </div>
 
       <div className="mt-12">
-        <SectionTitle title="Skills" className="mb-8" />
+        <SectionTitle title="Tech Stack Expertise" className="mb-8" />
         <div className="space-y-8">
           {categorizedSkills.map(category => (
             <div key={category.name}>
@@ -123,3 +176,4 @@ export default function ProfileSection() {
     </SectionWrapper>
   );
 }
+

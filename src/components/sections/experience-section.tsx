@@ -5,7 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 const summary = {
   name: "Anoop p hegde",
-  description: "Highly motivated and experienced Staff Software Engineer specializing in GenAI, Cloud technologies, and Full Stack Development. Proven ability to design, develop, and deploy scalable and innovative software solutions. Passionate about leveraging cutting-edge technologies to solve complex problems and drive business value.",
+  description: "Senior DevOps Consultant with 7.8 years of expertise in DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development, and Web Development. Proficient in building end-to-end CI/CD pipelines, IAC solutions, and containerization with Platform Engineering strategies. Experienced in centralized monitoring/logging, HA Redhat Cluster, and implementing security best practices.",
   address: "Bengaluru, Karnataka, India",
   phone: "+91 98765 43210", // Placeholder
   email: "anoop.hegde@example.com", // Placeholder
