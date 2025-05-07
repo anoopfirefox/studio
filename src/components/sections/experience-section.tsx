@@ -13,16 +13,10 @@ const summary = {
 
 const educationData = [
   {
-    degree: "Master of Science in Computer Science", 
-    period: "2014 - 2016", 
-    institution: "Visvesvaraya Technological University (VTU) or equivalent", 
-    description: "Specialized in advanced software engineering principles, distributed systems, and machine learning.",
-  },
-  {
-    degree: "Bachelor of Engineering in Computer Science", 
-    period: "2010 - 2014", 
-    institution: "Reputed Engineering College, India", 
-    description: "Comprehensive foundation in computer science fundamentals, including data structures, algorithms, database management, and operating systems.",
+    degree: "Bachelor of Engineering", 
+    period: "03/2013 - 07/2017", 
+    institution: "AMC Engineering College", 
+    description: "Information Science and Engineering",
   },
 ];
 
@@ -89,7 +83,7 @@ export default function ExperienceSection() {
                 </CardHeader>
                 <CardContent>
                   <p className="italic text-muted-foreground mb-2">{edu.institution}</p>
-                  <p className="text-sm text-muted-foreground">{edu.description}</p>
+                  {edu.description && <p className="text-sm text-muted-foreground">{edu.description}</p>}
                 </CardContent>
               </Card>
             ))}
