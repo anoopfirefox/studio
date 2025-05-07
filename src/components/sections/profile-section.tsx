@@ -3,7 +3,6 @@ import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge'; 
-import { Calendar, Globe, MapPin, UserCheck, Mail, Gift, Briefcase } from 'lucide-react';
 
 interface SkillCategory {
   name: string;
@@ -74,16 +73,6 @@ const categorizedSkills: SkillCategory[] = [
   },
 ];
 
-const personalDetails = [
-  { label: "Birthday", value: "1 May 1990", icon: Gift },
-  { label: "Website", value: "portfolio.example.com", icon: Globe, href: "https://portfolio.example.com" }, 
-  { label: "City", value: "Bengaluru, Karnataka, India", icon: MapPin },
-  { label: "Age", value: "34", icon: Calendar }, 
-  { label: "Degree", value: "Bachelor of Engineering", icon: UserCheck }, 
-  { label: "Email", value: "anoop.techstorm@gmail.com", icon: Mail, href: "mailto:anoop.techstorm@gmail.com" },
-  { label: "Freelance", value: "Available", icon: Briefcase },
-];
-
 export default function ProfileSection() {
   return (
     <SectionWrapper id="profile" ariaLabelledBy="profile-heading">
@@ -105,7 +94,7 @@ export default function ProfileSection() {
         <div className="md:col-span-2">
           <h3 className="text-2xl font-semibold text-primary mb-3">Senior DevOps Consultant</h3>
           <p className="text-muted-foreground mb-4 leading-relaxed">
-            Senior DevOps Consultant with overall 7.8 years of Industry expertise across various verticals such as DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development as well as Web Development Solutions. Responsible for building end-to-end industry best practices involved CI/CD, IAC, Containerization solutions such as Docker and Kubernetes with Platform Engineering Strategies, Centralized container monitoring/logging solutions, HA Redhat Cluster. Involved in implementing the best security practices in the platform solution such as Azure WAF Frontdoor, GHA-Security, Mend Container scanning, SonarQube, Selfhosted Github Runners hosted on Private AKS Clusters, end-to-end touchless change management.
+            Senior DevOps Consultant with overall 7.8 years of Industry expertise across various verticals such as DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development as well as Web Development Solutions. Responsible for building end-to-end industry best practices involved CI/CD, IAC, Containerization solutions such as Docker and kubernetes with Platform Engineering Strategies, Centralized container monitoring/logging solutions, HA Redhat Cluster. Involved in implementing the best security practices in the platform solution such as Azure WAF Frontdoor, GHA-Security, Mend Container scanning, SonarQube, Selfhosted Github Runners hosted on Private AKS Clusters, end-to-end touchless change management.
           </p>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground mb-6 leading-relaxed">
             <li>
@@ -115,31 +104,20 @@ export default function ProfileSection() {
               Actively learning and upskilling Multi-Cloud Platforms, SRE, Platform Engineering, Advanced Containerization Technologies and Full Stack Development.
             </li>
             <li>
-              Proactively learning middleware stack such as Apache/Modsecurity, JBoss, WebLogic, Tomcat, SSL/SAML, ELK. In Addition to that worked on API gateway such as Spring Eureka, Redhat HA Clustering.
+              Proactively learning middleware stack such as Apache/Modsecurity, JBoss, WebLogic, Tomcat, SSL/SAML, ELK. In Addition to that worked on API gateway such as spring eureka, Redhat HA Clustering.
             </li>
+             <li>OTEL, Azure Data Explorer</li>
           </ul>
-          
-          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-6">
-            {personalDetails.map(detail => (
-              <div key={detail.label} className="flex items-center space-x-2">
-                <detail.icon className="h-5 w-5 text-primary" />
-                <span className="font-medium text-foreground">{detail.label}:</span>
-                {detail.href ? (
-                  <a href={detail.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors break-all">{detail.value}</a>
-                ) : (
-                  <span className="text-muted-foreground break-all">{detail.value}</span>
-                )}
-              </div>
-            ))}
-          </div>
-          <p className="text-muted-foreground leading-relaxed">
-            Seeking challenging opportunities to contribute to impactful projects and continue learning in the ever-evolving tech landscape. My background includes architecting robust systems, optimizing performance, and ensuring code quality through best practices and thorough testing. I thrive in dynamic settings that foster innovation and continuous improvement.
-          </p>
         </div>
       </div>
 
       <div className="mt-12">
         <SectionTitle title="Tech Stack Expertise" className="mb-8" />
+        <p className="text-muted-foreground mb-6 leading-relaxed">
+          GitHub Repository: 
+          <a href="https://github.com/orgs/AnoopHegde/repositories" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1">https://github.com/orgs/AnoopHegde/repositories</a>, 
+          <a href="https://github.com/anoopfirefox?tab=repositories" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1">https://github.com/anoopfirefox?tab=repositories</a>
+        </p>
         <div className="space-y-8">
           {categorizedSkills.map(category => (
             <div key={category.name}>
