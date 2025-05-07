@@ -3,7 +3,7 @@ import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge'; 
-import { Calendar, Globe, Phone, MapPin, UserCheck, Mail, Gift, Briefcase } from 'lucide-react';
+import { Calendar, Globe, MapPin, UserCheck, Mail, Gift, Briefcase } from 'lucide-react';
 
 interface SkillCategory {
   name: string;
@@ -104,10 +104,9 @@ const categorizedSkills: SkillCategory[] = [
 const personalDetails = [
   { label: "Birthday", value: "1 May 1990", icon: Gift },
   { label: "Website", value: "portfolio.example.com", icon: Globe, href: "https://portfolio.example.com" },
-  { label: "Phone", value: "+91 98765 43210", icon: Phone, href: "tel:+919876543210" },
   { label: "City", value: "Bengaluru, Karnataka, India", icon: MapPin },
-  { label: "Age", value: "34", icon: Calendar },
-  { label: "Degree", value: "Bachelor of Engineering", icon: UserCheck }, // Updated Degree
+  { label: "Age", value: "34", icon: Calendar }, // This will need to be updated dynamically or removed if not maintained
+  { label: "Degree", value: "Bachelor of Engineering", icon: UserCheck }, 
   { label: "Email", value: "anoop.hegde@example.com", icon: Mail, href: "mailto:anoop.hegde@example.com" },
   { label: "Freelance", value: "Available", icon: Briefcase },
 ];

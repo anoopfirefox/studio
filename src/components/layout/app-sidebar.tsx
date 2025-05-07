@@ -17,9 +17,6 @@ import {
   FileTextIcon, 
   AwardIcon,
   MailIcon, 
-  TwitterIcon, 
-  FacebookIcon, 
-  InstagramIcon, 
   LinkedinIcon, 
   GithubIcon 
 } from 'lucide-react';
@@ -35,11 +32,8 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { href: "https://twitter.com", label: "Twitter", icon: TwitterIcon, ariaLabel: "Visit my Twitter profile" },
-  { href: "https://facebook.com", label: "Facebook", icon: FacebookIcon, ariaLabel: "Visit my Facebook profile" },
-  { href: "https://instagram.com", label: "Instagram", icon: InstagramIcon, ariaLabel: "Visit my Instagram profile" },
-  { href: "https://linkedin.com", label: "LinkedIn", icon: LinkedinIcon, ariaLabel: "Visit my LinkedIn profile" },
-  { href: "https://github.com", label: "GitHub", icon: GithubIcon, ariaLabel: "Visit my GitHub profile" },
+  { href: "https://linkedin.com/in/anoop-hegde-041625103/", label: "LinkedIn", icon: LinkedinIcon, ariaLabel: "Visit my LinkedIn profile" },
+  { href: "https://github.com/anoopfirefox", label: "GitHub", icon: GithubIcon, ariaLabel: "Visit my GitHub profile" },
 ];
 
 export default function AppSidebar() {
@@ -97,7 +91,8 @@ export default function AppSidebar() {
 
 
     return () => sections.forEach(section => observer.unobserve(section));
-  }, [pathname, navItems]); // Added navItems to dependency array
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]); // Removed navItems from dependency array as it's constant
 
 
   return (

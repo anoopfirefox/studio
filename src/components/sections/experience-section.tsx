@@ -7,8 +7,8 @@ const summary = {
   name: "Anoop p hegde",
   description: "Senior DevOps Consultant with 7.8 years of expertise in DevOps, SecOps, GitOps, Container Orchestration, Production Grade Infrastructure, Cloud Development, and Web Development. Proficient in building end-to-end CI/CD pipelines, IAC solutions, and containerization with Platform Engineering strategies. Experienced in centralized monitoring/logging, HA Redhat Cluster, and implementing security best practices.",
   address: "Bengaluru, Karnataka, India",
-  phone: "+91 98765 43210", // Placeholder
-  email: "anoop.hegde@example.com", // Placeholder
+  phone: "", // Removed phone number
+  email: "anoop.hegde@example.com", 
 };
 
 const educationData = [
@@ -119,7 +119,7 @@ export default function ExperienceSection() {
                 <p className="text-muted-foreground mb-3">{summary.description}</p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li>{summary.address}</li>
-                  <li>{summary.phone}</li>
+                  {summary.phone && <li>{summary.phone}</li>}
                   <li>{summary.email}</li>
                 </ul>
               </CardContent>
