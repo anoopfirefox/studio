@@ -4,45 +4,45 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* Light Gray */
-    --foreground: 240 10% 10%; /* Dark Gray/Black */
+    --background: 210 100% 99%; /* Very light, almost white, cool tone */
+    --foreground: 224 71% 12%; /* Dark, slightly desaturated blue-gray */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 240 10% 10%;
+    --card-foreground: 224 71% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 224 71% 12%;
 
-    --primary: 195 85% 40%; /* Modernized Teal/Blue */
-    --primary-foreground: 210 40% 98%; /* White */
+    --primary: 220 90% 55%; /* Vibrant, modern blue */
+    --primary-foreground: 0 0% 100%; /* White for good contrast on blue */
 
-    --secondary: 210 20% 92%; /* Lighter Gray for secondary elements */
-    --secondary-foreground: 240 10% 10%;
+    --secondary: 220 15% 95%; /* Very light cool gray */
+    --secondary-foreground: 224 71% 25%; /* Muted blue-gray */
 
-    --muted: 210 20% 88%; /* Muted Gray */
-    --muted-foreground: 240 5% 45%;
+    --muted: 220 15% 92%; /* Slightly darker light cool gray */
+    --muted-foreground: 224 71% 45%; /* Muted gray-blue */
 
-    --accent: 195 85% 40%; /* Consistent with new primary */
-    --accent-foreground: 210 40% 98%; /* Consistent with new primary-foreground */
+    --accent: 220 90% 55%; /* Same as primary */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 20% 85%; /* Light Gray Border */
-    --input: 210 20% 85%;
-    --ring: 195 85% 45%; /* Ring color for new primary */
+    --border: 220 20% 90%; /* Light cool gray border */
+    --input: 220 20% 90%;
+    --ring: 220 90% 60%; /* Slightly lighter primary for ring */
 
     --radius: 0.5rem;
 
     /* Sidebar Specific Colors (Always Dark Theme for Sidebar) */
-    --sidebar-background: 220 25% 12%; /* Dark Blue/Gray, slightly adjusted */
-    --sidebar-foreground: 220 15% 88%; /* Light Gray/Off-white for text, slightly adjusted */
-    --sidebar-primary: 180 80% 42%; /* Teal for active/hover items in sidebar, slightly adjusted */
-    --sidebar-primary-foreground: 0 0% 98%; /* White */
-    --sidebar-accent: 220 25% 22%; /* Slightly lighter dark for hover backgrounds, adjusted */
-    --sidebar-accent-foreground: 0 0% 96%; /* White, slightly adjusted */
-    --sidebar-border: 220 25% 18%; /* Border color within sidebar, adjusted */
-    --sidebar-ring: 180 80% 48%; /* Ring color for focus in sidebar, adjusted */
+    --sidebar-background: 224 71% 6%; /* Slightly different dark shade than main bg for subtle separation */
+    --sidebar-foreground: 210 20% 90%; /* Slightly dimmer than main foreground */
+    --sidebar-primary: 210 100% 65%; /* Matching dark mode primary, or slightly brighter for emphasis */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text on active items */
+    --sidebar-accent: 224 71% 12%; /* Hover states - similar to secondary */
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 224 71% 8%; /* Border within sidebar */
+    --sidebar-ring: 210 100% 70%;
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -52,33 +52,33 @@
   }
 
   .dark {
-    --background: 220 20% 10%; /* Deep charcoal */
-    --foreground: 210 20% 95%; /* Off-white, slightly less stark */
+    --background: 224 71% 4%; /* Very dark, almost black, cool desaturated blue */
+    --foreground: 210 20% 94%; /* Off-white, slightly cool */
 
-    --card: 220 20% 13%; /* Slightly lighter charcoal for cards */
-    --card-foreground: 210 20% 95%;
+    --card: 224 71% 7%; /* Slightly lighter than background, dark cool blue */
+    --card-foreground: 210 20% 94%;
 
-    --popover: 220 20% 10%; /* Consistent with background */
-    --popover-foreground: 210 20% 95%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 20% 94%;
 
-    --primary: 180 85% 40%; /* More vibrant teal for dark mode */
-    --primary-foreground: 210 40% 98%; /* White, for good contrast */
+    --primary: 210 100% 60%; /* Bright, vivid blue for dark mode, stands out */
+    --primary-foreground: 224 71% 10%; /* Dark blue for contrast on bright blue buttons */
 
-    --secondary: 220 15% 25%; /* Darker gray for secondary elements */
-    --secondary-foreground: 210 20% 85%; /* Lighter gray for text on secondary */
+    --secondary: 224 71% 12%; /* Dark muted cool blue */
+    --secondary-foreground: 210 20% 85%;
 
-    --muted: 220 15% 20%; /* Muted dark gray */
-    --muted-foreground: 210 15% 60%; /* Softer gray for muted text */
+    --muted: 224 71% 12%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 180 85% 40%; /* Consistent with new dark primary */
-    --accent-foreground: 210 40% 98%; /* Consistent with new dark primary-foreground */
+    --accent: 210 100% 60%; /* Same as primary */
+    --accent-foreground: 224 71% 10%;
 
-    --destructive: 0 70% 50%; /* Slightly adjusted destructive red */
+    --destructive: 0 60% 45%; /* Darker, more desaturated red for dark mode */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 25%; /* Darker border */
-    --input: 220 15% 22%; /* Slightly different from border for input fields */
-    --ring: 180 85% 45%; /* Ring color matching new dark primary */
+    --border: 224 71% 10%; /* Darker border */
+    --input: 224 71% 10%;
+    --ring: 210 100% 65%; /* Slightly lighter primary for ring */
     
     /* Sidebar variables are defined in :root and apply consistently */
   }
