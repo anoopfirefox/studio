@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -82,13 +83,13 @@ const SidebarProvider = React.forwardRef<
           ?.split('=')[1];
         if (cookieValue !== undefined) {
           const cookieIsOpen = cookieValue === 'true';
-          if (internalOpen !== cookieIsOpen) { // Avoid unnecessary update if already correct
+          if (internalOpen !== cookieIsOpen) { 
             setInternalOpen(cookieIsOpen);
           }
         }
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [openProp, defaultOpenProp]); // Removed internalOpen from deps to prevent loop, cookie read once based on prop presence
+    }, [openProp]); // Ensure this runs when openProp changes, defaultOpenProp is for initial setup
 
     // Effect to sync internal state if 'open' (controlled prop) changes
     React.useEffect(() => {
@@ -103,17 +104,17 @@ const SidebarProvider = React.forwardRef<
       (value: boolean | ((current: boolean) => boolean)) => {
         const newOpenValue = typeof value === 'function' ? value(currentOpen) : value;
 
-        if (setOpenProp) { // If controlled
+        if (setOpenProp) { 
           setOpenProp(newOpenValue);
-        } else { // If uncontrolled
+        } else { 
           setInternalOpen(newOpenValue);
         }
-        // Always update cookie
+        
         if (typeof window !== 'undefined') {
           document.cookie = `${SIDEBAR_COOKIE_NAME}=${newOpenValue}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
         }
       },
-      [currentOpen, setOpenProp]
+      [currentOpen, setOpenProp] 
     );
 
     const toggleSidebar = React.useCallback(() => {
@@ -301,30 +302,50 @@ Sidebar.displayName = "Sidebar"
 const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button> & { asChild?: boolean }
->(({ className, onClick, asChild = false, children, ...props }, ref) => {
+>(({ className, onClick: onClickProp, asChild = false, children, ...buttonSpecificProps }, ref) => {
   const { toggleSidebar } = useSidebar();
 
   const Comp = asChild ? Slot : Button;
+
+  let content;
+  if (asChild) {
+    content = children; 
+  } else {
+    if (children) {
+      content = children; 
+    } else {
+      content = (
+        <>
+          <PanelLeft />
+          <span className="sr-only">Toggle Sidebar</span>
+        </>
+      );
+    }
+  }
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (onClickProp) {
+      onClickProp(event);
+    }
+    // If onClick is part of buttonSpecificProps (e.g. from a <Button onClick={...} /> child via Slot)
+    // it will be called by the Button itself. We only need to ensure toggleSidebar is called.
+    if (!event.defaultPrevented) {
+        toggleSidebar();
+    }
+  };
+
 
   return (
     <Comp 
       ref={ref}
       data-sidebar="trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("h-7 w-7 md:flex", className)} 
-      onClick={(event) => {
-        onClick?.(event);
-        toggleSidebar();
-      }}
-      {...props}
+      variant="ghost" 
+      size="icon"     
+      className={cn("h-7 w-7", className)} // Removed md:flex, specific usages will control visibility
+      onClick={handleClick}
+      {...buttonSpecificProps} 
     >
-      {asChild ? children : (
-        <>
-          <PanelLeft />
-          <span className="sr-only">Toggle Sidebar</span>
-        </>
-      )}
+      {content}
     </Comp>
   );
 });
@@ -806,3 +827,4 @@ export {
   SidebarTrigger,
   useSidebar,
 }
+
