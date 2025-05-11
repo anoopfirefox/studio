@@ -1,4 +1,3 @@
-
 "use client";
 
 import SectionWrapper from '@/components/layout/section-wrapper';
@@ -16,18 +15,21 @@ export default function ContactUsSection() {
     <SectionWrapper id="contact-us" ariaLabelledBy="contact-us-heading">
       <SectionTitle id="contact-us-heading" title="Get In Touch" subtitle="Feel free to reach out to me." />
       
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto"> {/* Centered and max-width for cards */}
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
         {contactInfo.map((info, index) => (
-          <Card key={index} className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl border border-border/70">
-            <CardHeader className="flex flex-col items-center pt-8 pb-4"> {/* Increased padding */}
-              <div className="bg-primary text-primary-foreground p-5 rounded-full shadow-md mb-4"> {/* Larger icon container */}
-                <info.icon className="h-8 w-8" /> {/* Increased icon size */}
+          <Card 
+            key={index} 
+            className="text-center shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl border border-border/70 hover:-translate-y-1 transform"
+          >
+            <CardHeader className="flex flex-col items-center pt-8 pb-4"> 
+              <div className="bg-primary text-primary-foreground p-5 rounded-full shadow-md mb-4"> 
+                <info.icon className="h-8 w-8" /> 
               </div>
               <CardTitle className="text-xl font-semibold text-foreground">{info.label}</CardTitle>
             </CardHeader>
-            <CardContent className="pb-8"> {/* Increased padding */}
+            <CardContent className="pb-8"> 
               {info.href ? (
-                 <a href={info.href} className="text-muted-foreground hover:text-primary transition-colors text-base break-all block"> {/* Block for centering */}
+                 <a href={info.href} className="text-muted-foreground hover:text-primary transition-colors text-base break-all block"> 
                    {info.value}
                 </a>
               ) : (

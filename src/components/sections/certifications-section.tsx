@@ -1,4 +1,3 @@
-
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
@@ -11,7 +10,7 @@ interface Certification {
   id: string;
   title: string;
   issuer: string;
-  date: string; // Format: "MMM YYYY" or "MMM YYYY - Present"
+  date: string; 
   imageUrl?: string;
   imageHint?: string;
   credentialUrl?: string;
@@ -92,22 +91,25 @@ export default function CertificationsSection() {
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {certificationsData.map((cert) => (
-          <Card key={cert.id} className="shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col bg-card border border-border/70 rounded-xl">
+          <Card 
+            key={cert.id} 
+            className="shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col bg-card border border-border/70 rounded-xl hover:-translate-y-1 transform"
+          >
             {cert.imageUrl ? (
               <CardHeader className="p-0 relative aspect-[16/9] overflow-hidden rounded-t-xl">
                 <Image 
                   src={cert.imageUrl} 
                   alt={`${cert.title} certificate`}
                   data-ai-hint={cert.imageHint || 'certificate official'}
-                  width={400} // Increased width for better quality
-                  height={225} // Adjusted height for 16:9
+                  width={400} 
+                  height={225} 
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" 
                 />
               </CardHeader>
             ) : (
                  <CardHeader className="py-8 flex flex-col items-center justify-center bg-secondary/40 rounded-t-xl">
                     <div className="p-4 bg-primary text-primary-foreground rounded-full shadow-md mb-3">
-                        <Award className="h-10 w-10" /> {/* Increased icon size */}
+                        <Award className="h-10 w-10" /> 
                     </div>
                  </CardHeader>
              )}

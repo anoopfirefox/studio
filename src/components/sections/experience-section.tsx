@@ -1,8 +1,7 @@
-
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'; 
-import { Briefcase, GraduationCap, MapPin, Mail, UserCircle } from 'lucide-react'; // Added UserCircle for summary
+import { Briefcase, GraduationCap, MapPin, Mail, UserCircle, Building, School } from 'lucide-react'; // Added UserCircle for summary
 
 const summary = {
   name: "Anoop P Hegde",
@@ -69,8 +68,8 @@ const experienceData = [
 
 const SubSectionTitle = ({ title, icon: Icon }: { title: string; icon: React.ElementType }) => (
   <div className="flex items-center mb-6">
-    <Icon className="h-7 w-7 text-primary mr-3" />
-    <h3 className="text-2xl font-semibold text-foreground">{title}</h3>
+    <Icon className="h-6 w-6 text-primary mr-3 flex-shrink-0" />
+    <h3 className="text-xl md:text-2xl font-semibold text-foreground">{title}</h3>
   </div>
 );
 
@@ -79,15 +78,21 @@ export default function ExperienceSection() {
     <SectionWrapper id="experience" ariaLabelledBy="experience-heading">
       <SectionTitle id="experience-heading" title="Journey" subtitle="My professional path and qualifications." />
       
-      <div className="grid lg:grid-cols-3 gap-10">
+      <div className="grid lg:grid-cols-3 gap-10 items-start">
         <div className="lg:col-span-2 space-y-8">
           <div>
             <SubSectionTitle title="Professional Experience" icon={Briefcase} />
             {experienceData.map((exp, index) => (
-              <Card key={index} className="mb-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary bg-card">
+              <Card 
+                key={index} 
+                className="mb-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary bg-card hover:-translate-y-1 transform"
+              >
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-foreground">{exp.role}</CardTitle>
-                  <CardDescription className="text-sm font-medium text-primary pt-1">{exp.company}</CardDescription>
+                  <div className="flex items-center text-sm text-muted-foreground pt-1">
+                    <Building className="h-4 w-4 mr-1.5 text-primary/80 flex-shrink-0"/> 
+                    <span>{exp.company}</span>
+                  </div>
                   <p className="text-xs text-muted-foreground pt-1">{exp.period}</p>
                 </CardHeader>
                 <CardContent>
@@ -102,14 +107,20 @@ export default function ExperienceSection() {
           </div>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-8 lg:sticky lg:top-24"> {/* Sticky for summary and education on larger screens */}
             <div>
               <SubSectionTitle title="Education" icon={GraduationCap} />
               {educationData.map((edu, index) => (
-                <Card key={index} className="mb-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary bg-card">
+                <Card 
+                  key={index} 
+                  className="mb-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary bg-card hover:-translate-y-1 transform"
+                >
                   <CardHeader>
                     <CardTitle className="text-xl font-bold text-foreground">{edu.degree}</CardTitle>
-                    <CardDescription className="text-sm font-medium text-primary pt-1">{edu.institution}</CardDescription>
+                    <div className="flex items-center text-sm text-muted-foreground pt-1">
+                        <School className="h-4 w-4 mr-1.5 text-primary/80 flex-shrink-0"/>
+                        <span>{edu.institution}</span>
+                    </div>
                      <p className="text-xs text-muted-foreground pt-1">{edu.period}</p>
                   </CardHeader>
                   {edu.description && (
@@ -122,7 +133,7 @@ export default function ExperienceSection() {
             </div>
            <div>
             <SubSectionTitle title="Summary" icon={UserCircle} />
-            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-card border border-border/70">
+            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 bg-card border border-border/70 hover:-translate-y-1 transform">
               <CardHeader>
                 <CardTitle className="text-xl font-bold text-foreground">{summary.name}</CardTitle>
               </CardHeader>

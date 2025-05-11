@@ -1,4 +1,3 @@
-
 "use client";
 import { 
   Sidebar, 
@@ -21,7 +20,7 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"; // Added AvatarImage
 
 const navItems = [
   { id: "profile", label: "Profile", icon: UserIcon, href: "#profile" },
@@ -38,17 +37,18 @@ const socialLinks = [
 
 export default function AppSidebar() {
   const { setOpenMobile, isMobile } = useSidebar();
-  const [activeSection, setActiveSection] = useState(navItems[0]?.id || ''); 
+  const [activeSection, setActiveSection] = useState(''); 
   const pathname = usePathname(); 
 
   const handleLinkClick = (sectionId: string) => {
     if (isMobile) {
       setOpenMobile(false);
     }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Smooth scroll handled by observer and href linking
+    // const element = document.getElementById(sectionId);
+    // if (element) {
+    //   element.scrollIntoView({ behavior: 'smooth' });
+    // }
   };
   
   useEffect(() => {
@@ -71,61 +71,47 @@ export default function AppSidebar() {
     
     sections.forEach(section => observer.observe(section));
 
+    // Initial active section logic
     if (window.location.hash) {
       const hashId = window.location.hash.substring(1);
-      if (navItems.some(item => item.id === hashId)) {
+      const targetSection = navItems.find(item => item.id === hashId);
+      if (targetSection) {
         setActiveSection(hashId);
-         const element = document.getElementById(hashId);
-         if (element) {
-            // Add a small delay to ensure content is rendered before scrolling
-            setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
-         }
+        // Optional: scroll into view if not handled by browser default
+        // setTimeout(() => document.getElementById(hashId)?.scrollIntoView({ behavior: 'smooth' }), 100);
+      } else if (navItems.length > 0) {
+        setActiveSection(navItems[0].id); // Default to first if hash is invalid
       }
-    } else {
-        // Fallback to set active section based on viewport if no hash
-        for (const section of sections) {
-            const rect = section.getBoundingClientRect();
-            // Check if the section is sufficiently visible
-            if (rect.top >= 0 && rect.top <= window.innerHeight / 2) { 
-                setActiveSection(section.id);
-                break;
-            }
-        }
-        // If still no active section (e.g. scrolled to bottom), default to last visible one or first
-        if (!sections.find(s => s.id === activeSection)) {
-             const visibleSections = sections.filter(s => {
-                 const r = s.getBoundingClientRect();
-                 return r.top < window.innerHeight && r.bottom >= 0;
-             });
-             if (visibleSections.length > 0) {
-                 setActiveSection(visibleSections[visibleSections.length -1].id);
-             } else if (sections.length > 0) {
-                 setActiveSection(sections[0].id);
-             }
-        }
+    } else if (navItems.length > 0) {
+      // If no hash, set the first item as active by default.
+      // The observer will correct this if the user is scrolled elsewhere.
+      setActiveSection(navItems[0].id);
     }
 
-
-    return () => sections.forEach(section => observer.unobserve(section));
+    return () => sections.forEach(section => {
+        if (section) observer.unobserve(section);
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]); 
-
+  }, [pathname]); // Removed 'navItems' as it's constant
 
   return (
     <Sidebar 
       side="left" 
+      variant="sidebar" // Explicitly using the "sidebar" variant for styling
       collapsible="icon" 
-      className="bg-sidebar text-sidebar-foreground border-r-0"
-      variant="sidebar"
+      className="border-r-sidebar-border" // Use sidebar specific border
     >
-      <SidebarHeader className="px-6 pt-6 pb-4 flex flex-col items-center text-center">
-        <Avatar className="h-24 w-24 border-4 border-sidebar-border shadow-md mb-3">
-          <AvatarFallback className="text-3xl bg-sidebar-primary text-sidebar-primary-foreground">
+      <SidebarHeader className="px-4 pt-6 pb-4 flex flex-col items-center text-center">
+        <Avatar className="h-28 w-28 border-4 border-sidebar-border shadow-lg mb-4">
+          {/* Placeholder for an actual image if available */}
+          {/* <AvatarImage src="/path-to-profile-image.jpg" alt="Anoop P Hegde" /> */}
+          <AvatarFallback className="text-4xl bg-sidebar-primary text-sidebar-primary-foreground font-semibold">
             AH
           </AvatarFallback>
         </Avatar>
-        <h1 className="text-2xl font-semibold text-sidebar-foreground">ANOOP P HEGDE</h1>
-        <div className="flex space-x-3 mt-3">
+        <h1 className="text-xl font-semibold text-sidebar-foreground tracking-tight">ANOOP P HEGDE</h1>
+        <p className="text-xs text-sidebar-foreground/70 mt-1">Senior DevOps Consultant</p>
+        <div className="flex space-x-4 mt-4">
           {socialLinks.map(link => (
             <Link 
               key={link.label} 
@@ -135,12 +121,12 @@ export default function AppSidebar() {
               aria-label={link.ariaLabel}
               className="text-sidebar-foreground/70 hover:text-sidebar-primary transition-colors duration-200"
             >
-              <link.icon size={20} />
+              <link.icon size={18} />
             </Link>
           ))}
         </div>
       </SidebarHeader>
-      <SidebarContent className="p-4"> {/* Adjusted padding and removed mt-2 */}
+      <SidebarContent> {/* Default padding from component will be used */}
         <SidebarMenu>
           {navItems.map(item => (
             <SidebarMenuItem key={item.label}> 
@@ -148,13 +134,19 @@ export default function AppSidebar() {
                 asChild 
                 isActive={activeSection === item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className="justify-start w-full text-base rounded-md"
-                variant="default" 
-                tooltip={item.label} // Added tooltip for collapsed state
+                className="justify-start w-full text-sm rounded-md" // Use text-sm for consistency
+                variant="default" // This will use sidebar CVA styling
+                size="default"
+                tooltip={{
+                    children: item.label,
+                    side: 'right',
+                    align: 'center',
+                    className: "bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-border" 
+                }}
               >
                 <a href={item.href} className="flex items-center w-full">
-                  <item.icon className="mr-3 h-5 w-5" />
-                  <span> 
+                  <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />
+                  <span className="truncate"> {/* Added truncate for long labels in collapsed mode */}
                     {item.label}
                   </span>
                 </a>
@@ -166,4 +158,3 @@ export default function AppSidebar() {
     </Sidebar>
   );
 }
-

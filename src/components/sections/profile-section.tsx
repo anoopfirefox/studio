@@ -1,8 +1,9 @@
-
 import SectionWrapper from '@/components/layout/section-wrapper';
 import SectionTitle from '@/components/ui/section-title';
 import { Badge } from '@/components/ui/badge'; 
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Github } from 'lucide-react'; // Added Github icon
+import { Button } from '@/components/ui/button'; // Added Button
+import Link from 'next/link'; // Added Link
 
 interface SkillCategory {
   name: string;
@@ -100,20 +101,34 @@ export default function ProfileSection() {
         </div>
       </div>
 
-      <div className="mt-16"> 
-        <SectionTitle title="Tech Stack Expertise" className="mb-10 text-center md:text-left" /> 
-        <p className="text-muted-foreground mb-8 leading-relaxed text-base lg:text-lg text-center md:text-left">
-          Explore my repositories: 
-          <a href="https://github.com/orgs/AnoopHegde/repositories" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1 font-medium">GitHub Organization</a>, 
-          <a href="https://github.com/anoopfirefox?tab=repositories" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1 font-medium">Personal GitHub</a>
-        </p>
+      <div className="mt-12 md:mt-16"> 
+        <SectionTitle title="Tech Stack Expertise" className="mb-8 text-center md:text-left" /> 
+        <div className="text-center md:text-left mb-8">
+            <p className="text-muted-foreground leading-relaxed text-base lg:text-lg mb-4">
+            Explore my repositories:
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4">
+                <Button asChild variant="outline" size="sm" className="transition-colors">
+                    <Link href="https://github.com/orgs/AnoopHegde/repositories" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" />
+                    GitHub Organization
+                    </Link>
+                </Button>
+                <Button asChild variant="outline" size="sm" className="transition-colors">
+                    <Link href="https://github.com/anoopfirefox?tab=repositories" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" />
+                    Personal GitHub
+                    </Link>
+                </Button>
+            </div>
+        </div>
         <div className="space-y-10"> 
           {categorizedSkills.map(category => (
             <div key={category.name}>
-              <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-5">{category.name}</h4>
-              <div className="flex flex-wrap gap-3"> 
+              <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">{category.name}</h4>
+              <div className="flex flex-wrap gap-2 sm:gap-3"> 
                 {category.skills.map(skill => (
-                  <Badge key={skill} variant="secondary" className="text-sm px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <Badge key={skill} variant="secondary" className="text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                     {skill}
                   </Badge>
                 ))}
