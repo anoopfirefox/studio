@@ -1,3 +1,4 @@
+
 "use client";
 import { 
   Sidebar, 
@@ -117,13 +118,13 @@ export default function AppSidebar() {
       className="bg-sidebar text-sidebar-foreground border-r-0"
       variant="sidebar"
     >
-      <SidebarHeader className="p-6 flex flex-col items-center text-center">
+      <SidebarHeader className="px-6 pt-6 pb-4 flex flex-col items-center text-center">
         <Avatar className="h-24 w-24 border-4 border-sidebar-border shadow-md mb-3">
           <AvatarFallback className="text-3xl bg-sidebar-primary text-sidebar-primary-foreground">
             AH
           </AvatarFallback>
         </Avatar>
-        <h1 className="text-2xl font-semibold text-sidebar-foreground">Anoop P Hegde</h1>
+        <h1 className="text-2xl font-semibold text-sidebar-foreground">ANOOP P HEGDE</h1>
         <div className="flex space-x-3 mt-3">
           {socialLinks.map(link => (
             <Link 
@@ -139,16 +140,17 @@ export default function AppSidebar() {
           ))}
         </div>
       </SidebarHeader>
-      <SidebarContent className="p-4 mt-2"> {/* Adjusted padding and margin */}
+      <SidebarContent className="p-4"> {/* Adjusted padding and removed mt-2 */}
         <SidebarMenu>
           {navItems.map(item => (
-            <SidebarMenuItem key={item.label}> {/* Removed className="px-3 py-1" */}
+            <SidebarMenuItem key={item.label}> 
               <SidebarMenuButton 
                 asChild 
                 isActive={activeSection === item.id}
                 onClick={() => handleLinkClick(item.id)}
                 className="justify-start w-full text-base rounded-md"
                 variant="default" 
+                tooltip={item.label} // Added tooltip for collapsed state
               >
                 <a href={item.href} className="flex items-center w-full">
                   <item.icon className="mr-3 h-5 w-5" />
@@ -164,3 +166,4 @@ export default function AppSidebar() {
     </Sidebar>
   );
 }
+
