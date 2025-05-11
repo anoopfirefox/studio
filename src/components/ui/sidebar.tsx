@@ -75,7 +75,7 @@ const SidebarProvider = React.forwardRef<
 
     // Effect to initialize from cookie if uncontrolled (runs client-side after mount)
     React.useEffect(() => {
-      if (openProp === undefined) { // Only if not a controlled component for 'open'
+      if (openProp === undefined && typeof window !== 'undefined') { // Only if not a controlled component for 'open'
         const cookieValue = document.cookie
           .split('; ')
           .find(row => row.startsWith(`${SIDEBAR_COOKIE_NAME}=`))
@@ -87,7 +87,8 @@ const SidebarProvider = React.forwardRef<
           }
         }
       }
-    }, [openProp, internalOpen, defaultOpenProp]); // Rerun if it becomes uncontrolled or initial values change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [openProp, defaultOpenProp]); // Removed internalOpen from deps to prevent loop, cookie read once based on prop presence
 
     // Effect to sync internal state if 'open' (controlled prop) changes
     React.useEffect(() => {
@@ -139,7 +140,7 @@ const SidebarProvider = React.forwardRef<
   
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-      }, [toggleSidebar]); // toggleSidebar is memoized
+      }, [toggleSidebar]); 
 
     const contextValue = React.useMemo<SidebarContext>(() => ({
       state: sidebarStateValue,
@@ -255,7 +256,7 @@ const Sidebar = React.forwardRef<
       >
         <div
           className={cn(
-            "duration-200 relative h-svh bg-transparent transition-[width] ease-linear",
+            "duration-200 relative h-svh bg-transparent transition-[width] ease-in-out",
             "w-[--sidebar-width]", 
             "group-data-[collapsible=offcanvas]:w-0",
             "group-data-[side=right]:rotate-180", 
@@ -267,7 +268,7 @@ const Sidebar = React.forwardRef<
         <div
           className={cn(
             sidebarBaseClasses, 
-            "duration-200 fixed inset-y-0 z-10 hidden transition-[left,right,width] ease-linear md:flex",
+            "duration-200 fixed inset-y-0 z-10 hidden transition-[left,right,width] ease-in-out md:flex",
             "w-[--sidebar-width]", 
             side === "left"
               ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
@@ -344,7 +345,7 @@ const SidebarRail = React.forwardRef<
       onClick={toggleSidebar}
       title="Toggle Sidebar"
       className={cn(
-        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
+        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-in-out after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
         "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar-DEFAULT",
@@ -366,7 +367,7 @@ const SidebarInset = React.forwardRef<
     <main
       ref={ref}
       className={cn(
-        "relative flex min-h-svh flex-1 flex-col bg-background transition-[margin-left] duration-200 ease-linear", 
+        "relative flex min-h-svh flex-1 flex-col bg-background transition-[margin-left] duration-200 ease-in-out", 
         "md:peer-data-[variant=inset]:peer-data-[state=expanded]:ml-[var(--sidebar-width)]",
         "md:peer-data-[variant=inset]:peer-data-[collapsible=icon]:peer-data-[state=collapsed]:ml-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]",
         "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))]",
@@ -488,7 +489,7 @@ const SidebarGroupLabel = React.forwardRef<
       ref={ref}
       data-sidebar="group-label"
       className={cn(
-        "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opacity] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opacity] ease-in-out focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         className
       )}
