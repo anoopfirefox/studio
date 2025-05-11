@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -6,20 +5,17 @@ import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { PanelLeftOpen, PanelLeftClose } from "lucide-react";
 import type React from 'react';
 
-export default function MobileSidebarToggle(): React.ReactElement | null {
-  const { openMobile, isMobile } = useSidebar(); 
+export default function MobileSidebarToggle(): React.ReactElement {
+  const { openMobile } = useSidebar(); 
 
-  if (!isMobile && typeof window !== 'undefined') { // Check window to ensure it's client-side for isMobile
-    // Avoid rendering on desktop during SSR or if isMobile is not yet determined
-    return null; 
-  }
-  
-  // On the server or before isMobile is true, we might not want to render or render a placeholder.
-  // Given md:hidden on parent, this is mostly for client-side logic.
-  // Fallback for initial render if isMobile is undefined.
-  const displayIcon = isMobile === undefined ? <PanelLeftOpen className="h-5 w-5" /> : (openMobile ? <PanelLeftClose className="h-5 w-5" /> : <PanelLeftOpen className="h-5 w-5" />);
-  const srText = isMobile === undefined ? "Toggle sidebar" : (openMobile ? "Close sidebar" : "Open sidebar");
+  // This component is wrapped in a div with `md:hidden` in src/app/page.tsx.
+  // That class handles hiding it on medium screens and up.
+  // Removing the internal conditional rendering `if(!isMobile) return null;`
+  // fixes a hydration mismatch where the server would render the button,
+  // but the client (on desktop) would render null before CSS hiding applies.
 
+  const displayIcon = openMobile ? <PanelLeftClose className="h-5 w-5" /> : <PanelLeftOpen className="h-5 w-5" />;
+  const srText = openMobile ? "Close sidebar" : "Open sidebar";
 
   return (
     <SidebarTrigger asChild>
@@ -35,4 +31,3 @@ export default function MobileSidebarToggle(): React.ReactElement | null {
     </SidebarTrigger>
   );
 }
-
