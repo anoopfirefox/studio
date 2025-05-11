@@ -1,3 +1,4 @@
+
 "use client";
 import { 
   Sidebar, 
@@ -6,7 +7,9 @@ import {
   SidebarMenu, 
   SidebarMenuItem, 
   SidebarMenuButton,
-  useSidebar 
+  useSidebar,
+  SidebarRail,
+  SidebarTrigger
 } from "@/components/ui/sidebar";
 import Link from 'next/link';
 import { 
@@ -16,7 +19,9 @@ import {
   AwardIcon,
   MailIcon, 
   LinkedinIcon, 
-  GithubIcon 
+  GithubIcon,
+  PanelLeftClose,
+  PanelLeftOpen
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -36,7 +41,7 @@ const socialLinks = [
 ];
 
 export default function AppSidebar() {
-  const { setOpenMobile, isMobile } = useSidebar();
+  const { setOpenMobile, isMobile, open } = useSidebar(); // Get 'open' state for icon toggle
   const [activeSection, setActiveSection] = useState(''); 
   const pathname = usePathname(); 
 
@@ -92,9 +97,17 @@ export default function AppSidebar() {
       collapsible="icon" 
       className="border-r-sidebar-border" 
     >
-      <SidebarHeader className="px-4 pt-6 pb-4 flex flex-col items-center text-center">
+      <SidebarRail /> {/* Added for edge click/drag toggle */}
+      <SidebarHeader className="px-4 pt-6 pb-4 flex flex-col items-center text-center relative">
+        {/* Desktop Sidebar Toggle Button */}
+        <div className="absolute top-3 right-3 hidden md:block">
+          <SidebarTrigger className="text-sidebar-foreground hover:text-sidebar-primary hover:bg-sidebar-accent">
+            {open ? <PanelLeftClose className="h-5 w-5" /> : <PanelLeftOpen className="h-5 w-5" />}
+            <span className="sr-only">Toggle sidebar</span>
+          </SidebarTrigger>
+        </div>
+
         <Avatar className="h-24 w-24 border-2 border-sidebar-border shadow-md mb-3">
-          {/* <AvatarImage src="/profile-picture.jpg" alt="Anoop P Hegde" /> */}
           <AvatarFallback className="text-3xl bg-sidebar-primary text-sidebar-primary-foreground font-semibold">
             AH
           </AvatarFallback>
