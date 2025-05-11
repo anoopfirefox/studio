@@ -12,25 +12,21 @@ import { PanelLeftOpen } from 'lucide-react';
 import React from 'react';
 
 export default function Home() {
-  // For desktop, open by default. Cookie will take over for subsequent visits.
-  // For mobile, it's controlled by openMobile state in SidebarProvider, triggered by button.
-  const isInitiallyMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-
   return (
-    <SidebarProvider defaultOpen={!isInitiallyMobile}>
+    <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="flex flex-col min-h-screen bg-background">
         {/* Mobile Sidebar Toggle Button */}
-        <div className="md:hidden p-3 fixed top-3 left-3 z-50"> {/* Adjusted padding and positioning */}
+        <div className="md:hidden fixed top-4 left-4 z-50"> {/* Adjusted positioning */}
           <SidebarTrigger asChild>
-            <Button variant="outline" size="icon" className="rounded-full shadow-lg bg-card hover:bg-card/80 text-card-foreground border-border/70">
+            <Button variant="outline" size="icon" className="rounded-full shadow-md bg-card hover:bg-card/80 text-card-foreground border-border/70">
                 <PanelLeftOpen className="h-5 w-5" />
                 <span className="sr-only">Toggle sidebar</span>
             </Button>
           </SidebarTrigger>
         </div>
         
-        <main className="flex-grow">
+        <main className="flex-grow pt-16 md:pt-0"> {/* Added top padding for mobile */}
           <HeroSection />
           <ProfileSection />
           <ProjectsSection />

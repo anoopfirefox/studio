@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"; // Added AvatarImage
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navItems = [
   { id: "profile", label: "Profile", icon: UserIcon, href: "#profile" },
@@ -45,10 +45,6 @@ export default function AppSidebar() {
       setOpenMobile(false);
     }
     // Smooth scroll handled by observer and href linking
-    // const element = document.getElementById(sectionId);
-    // if (element) {
-    //   element.scrollIntoView({ behavior: 'smooth' });
-    // }
   };
   
   useEffect(() => {
@@ -71,20 +67,15 @@ export default function AppSidebar() {
     
     sections.forEach(section => observer.observe(section));
 
-    // Initial active section logic
     if (window.location.hash) {
       const hashId = window.location.hash.substring(1);
       const targetSection = navItems.find(item => item.id === hashId);
       if (targetSection) {
         setActiveSection(hashId);
-        // Optional: scroll into view if not handled by browser default
-        // setTimeout(() => document.getElementById(hashId)?.scrollIntoView({ behavior: 'smooth' }), 100);
       } else if (navItems.length > 0) {
-        setActiveSection(navItems[0].id); // Default to first if hash is invalid
+        setActiveSection(navItems[0].id); 
       }
     } else if (navItems.length > 0) {
-      // If no hash, set the first item as active by default.
-      // The observer will correct this if the user is scrolled elsewhere.
       setActiveSection(navItems[0].id);
     }
 
@@ -92,20 +83,19 @@ export default function AppSidebar() {
         if (section) observer.unobserve(section);
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]); // Removed 'navItems' as it's constant
+  }, [pathname]); 
 
   return (
     <Sidebar 
       side="left" 
-      variant="sidebar" // Explicitly using the "sidebar" variant for styling
+      variant="sidebar" 
       collapsible="icon" 
-      className="border-r-sidebar-border" // Use sidebar specific border
+      className="border-r-sidebar-border" 
     >
       <SidebarHeader className="px-4 pt-6 pb-4 flex flex-col items-center text-center">
-        <Avatar className="h-28 w-28 border-4 border-sidebar-border shadow-lg mb-4">
-          {/* Placeholder for an actual image if available */}
-          {/* <AvatarImage src="/path-to-profile-image.jpg" alt="Anoop P Hegde" /> */}
-          <AvatarFallback className="text-4xl bg-sidebar-primary text-sidebar-primary-foreground font-semibold">
+        <Avatar className="h-24 w-24 border-2 border-sidebar-border shadow-md mb-3">
+          {/* <AvatarImage src="/profile-picture.jpg" alt="Anoop P Hegde" /> */}
+          <AvatarFallback className="text-3xl bg-sidebar-primary text-sidebar-primary-foreground font-semibold">
             AH
           </AvatarFallback>
         </Avatar>
@@ -126,7 +116,7 @@ export default function AppSidebar() {
           ))}
         </div>
       </SidebarHeader>
-      <SidebarContent> {/* Default padding from component will be used */}
+      <SidebarContent> 
         <SidebarMenu>
           {navItems.map(item => (
             <SidebarMenuItem key={item.label}> 
@@ -134,8 +124,8 @@ export default function AppSidebar() {
                 asChild 
                 isActive={activeSection === item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className="justify-start w-full text-sm rounded-md" // Use text-sm for consistency
-                variant="default" // This will use sidebar CVA styling
+                className="justify-start w-full text-sm rounded-md" 
+                variant="default" 
                 size="default"
                 tooltip={{
                     children: item.label,
@@ -146,7 +136,7 @@ export default function AppSidebar() {
               >
                 <a href={item.href} className="flex items-center w-full">
                   <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />
-                  <span className="truncate"> {/* Added truncate for long labels in collapsed mode */}
+                  <span className="truncate"> 
                     {item.label}
                   </span>
                 </a>
